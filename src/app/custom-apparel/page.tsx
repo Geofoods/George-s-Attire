@@ -1,18 +1,24 @@
 "use client"
 
-import { useState, useRef, useCallback } from "react"
+import { useState, useRef, useCallback, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import { useCartStore } from "@/lib/store"
 
 type ApparelType = "TSHIRT" | "SWEATSHIRT" | "HOODIE"
 type Size = "S" | "M" | "L" | "XL"
 type ShippingMethod = "STANDARD" | "RUSH"
-type PrintLocation =
-  | "Front"
-  | "Back"
-  | "Left Chest"
-  | "Right Chest"
-  | "Sleeve"
+export type GarmentView = "FRONT" | "BACK" | "LEFT_SLEEVE" | "RIGHT_SLEEVE"
+
+export interface PlacementPreset {
+  id: string
+  label: string
+  category: "Front" | "Back" | "Left Sleeve" | "Right Sleeve"
+  view: GarmentView
+  xPercent: number // Center X position percentage inside container
+  yPercent: number // Center Y position percentage inside container
+  baseWidthPercent: number // Base width percentage
+  baseHeightPercent: number // Base height percentage
+}
 
 interface ApparelOption {
   type: ApparelType
@@ -40,12 +46,121 @@ const COLOR_OPTIONS: ColorOption[] = [
   { name: "Navy", hex: "#1a1a2e" },
 ]
 
-const PRINT_LOCATIONS: PrintLocation[] = [
-  "Front",
-  "Back",
-  "Left Chest",
-  "Right Chest",
-  "Sleeve",
+const PLACEMENT_PRESETS: PlacementPreset[] = [
+  // FRONT
+  {
+    id: "front-center",
+    label: "Center Chest",
+    category: "Front",
+    view: "FRONT",
+    xPercent: 50,
+    yPercent: 48,
+    baseWidthPercent: 36,
+    baseHeightPercent: 36,
+  },
+  {
+    id: "front-left-chest",
+    label: "Left Chest (Heart)",
+    category: "Front",
+    view: "FRONT",
+    xPercent: 38,
+    yPercent: 40,
+    baseWidthPercent: 18,
+    baseHeightPercent: 18,
+  },
+  {
+    id: "front-right-chest",
+    label: "Right Chest",
+    category: "Front",
+    view: "FRONT",
+    xPercent: 62,
+    yPercent: 40,
+    baseWidthPercent: 18,
+    baseHeightPercent: 18,
+  },
+  {
+    id: "front-stomach",
+    label: "Lower Stomach / Hem",
+    category: "Front",
+    view: "FRONT",
+    xPercent: 50,
+    yPercent: 68,
+    baseWidthPercent: 36,
+    baseHeightPercent: 26,
+  },
+  // BACK
+  {
+    id: "back-center",
+    label: "Full Center Back",
+    category: "Back",
+    view: "BACK",
+    xPercent: 50,
+    yPercent: 50,
+    baseWidthPercent: 38,
+    baseHeightPercent: 38,
+  },
+  {
+    id: "back-upper",
+    label: "Upper Back / Yoke",
+    category: "Back",
+    view: "BACK",
+    xPercent: 50,
+    yPercent: 32,
+    baseWidthPercent: 34,
+    baseHeightPercent: 20,
+  },
+  {
+    id: "back-lower",
+    label: "Lower Back",
+    category: "Back",
+    view: "BACK",
+    xPercent: 50,
+    yPercent: 70,
+    baseWidthPercent: 36,
+    baseHeightPercent: 25,
+  },
+  // LEFT SLEEVE
+  {
+    id: "left-sleeve-shoulder",
+    label: "Upper Shoulder / Bicep",
+    category: "Left Sleeve",
+    view: "LEFT_SLEEVE",
+    xPercent: 45,
+    yPercent: 38,
+    baseWidthPercent: 24,
+    baseHeightPercent: 24,
+  },
+  {
+    id: "left-sleeve-cuff",
+    label: "Lower Forearm / Cuff",
+    category: "Left Sleeve",
+    view: "LEFT_SLEEVE",
+    xPercent: 45,
+    yPercent: 64,
+    baseWidthPercent: 20,
+    baseHeightPercent: 20,
+  },
+  // RIGHT SLEEVE
+  {
+    id: "right-sleeve-shoulder",
+    label: "Upper Shoulder / Bicep",
+    category: "Right Sleeve",
+    view: "RIGHT_SLEEVE",
+    xPercent: 55,
+    yPercent: 38,
+    baseWidthPercent: 24,
+    baseHeightPercent: 24,
+  },
+  {
+    id: "right-sleeve-cuff",
+    label: "Lower Forearm / Cuff",
+    category: "Right Sleeve",
+    view: "RIGHT_SLEEVE",
+    xPercent: 55,
+    yPercent: 64,
+    baseWidthPercent: 20,
+    baseHeightPercent: 20,
+  },
 ]
 
 const EXTRA_PRINT_COST = 3.0
@@ -57,56 +172,201 @@ const TAX_RATE = 0.13
 const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/svg+xml"]
 const MAX_FILE_SIZE = 10 * 1024 * 1024
 
-function tshirtSVG(color: string, borderColor: string) {
+// SVG Renderers for Front, Back, Left Sleeve, Right Sleeve
+function RenderGarmentSVG({
+  type,
+  view,
+  color,
+  borderColor,
+}: {
+  type: ApparelType
+  view: GarmentView
+  color: string
+  borderColor: string
+}) {
+  if (view === "FRONT") {
+    if (type === "TSHIRT") {
+      return (
+        <svg viewBox="0 0 200 240" className="w-full h-full">
+          <path
+            d="M50 40 L30 60 L50 80 L50 220 L150 220 L150 80 L170 60 L150 40 L130 55 C120 70 80 70 70 55 Z"
+            fill={color}
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+          {/* Front Collar Line */}
+          <path
+            d="M70 55 C80 70 120 70 130 55"
+            fill="none"
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+        </svg>
+      )
+    }
+    if (type === "SWEATSHIRT") {
+      return (
+        <svg viewBox="0 0 200 240" className="w-full h-full">
+          <path
+            d="M50 40 L25 65 L45 85 L45 220 L155 220 L155 85 L175 65 L150 40 L135 50 C125 65 75 65 65 50 Z"
+            fill={color}
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+          {/* Collar & Ribbed Hem */}
+          <path
+            d="M65 50 C75 65 125 65 135 50"
+            fill="none"
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+          <path
+            d="M45 215 L155 215 L155 225 L45 225 Z"
+            fill={color}
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+        </svg>
+      )
+    }
+    // HOODIE FRONT
+    return (
+      <svg viewBox="0 0 200 260" className="w-full h-full">
+        {/* Main Body & Arms */}
+        <path
+          d="M55 55 L25 75 L45 95 L45 230 L155 230 L155 95 L175 75 L145 55 L130 65 C120 40 80 40 70 65 Z"
+          fill={color}
+          stroke={borderColor}
+          strokeWidth="2"
+        />
+        {/* Hood Front */}
+        <path
+          d="M70 65 C70 30 85 15 100 15 C115 15 130 30 130 65 L125 62 C125 38 113 25 100 25 C87 25 75 38 75 62 Z"
+          fill={color}
+          stroke={borderColor}
+          strokeWidth="2"
+        />
+        {/* Kangaroo Pocket */}
+        <path
+          d="M65 170 L135 170 L145 220 L55 220 Z"
+          fill={color}
+          stroke={borderColor}
+          strokeWidth="2"
+        />
+      </svg>
+    )
+  }
+
+  if (view === "BACK") {
+    if (type === "TSHIRT") {
+      return (
+        <svg viewBox="0 0 200 240" className="w-full h-full">
+          {/* Back Body & High Neckband */}
+          <path
+            d="M50 40 L30 60 L50 80 L50 220 L150 220 L150 80 L170 60 L150 40 L130 46 C120 44 80 44 70 46 Z"
+            fill={color}
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+          <path
+            d="M70 46 C80 50 120 50 130 46"
+            fill="none"
+            stroke={borderColor}
+            strokeWidth="1.5"
+          />
+          {/* Back Tag / Seam */}
+          <line x1="100" y1="48" x2="100" y2="58" stroke={borderColor} strokeWidth="1" strokeDasharray="2 2" />
+        </svg>
+      )
+    }
+    if (type === "SWEATSHIRT") {
+      return (
+        <svg viewBox="0 0 200 240" className="w-full h-full">
+          <path
+            d="M50 40 L25 65 L45 85 L45 220 L155 220 L155 85 L175 65 L150 40 L135 45 C125 42 75 42 65 45 Z"
+            fill={color}
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+          <path
+            d="M65 45 C75 48 125 48 135 45"
+            fill="none"
+            stroke={borderColor}
+            strokeWidth="1.5"
+          />
+          <path
+            d="M45 215 L155 215 L155 225 L45 225 Z"
+            fill={color}
+            stroke={borderColor}
+            strokeWidth="2"
+          />
+        </svg>
+      )
+    }
+    // HOODIE BACK
+    return (
+      <svg viewBox="0 0 200 260" className="w-full h-full">
+        {/* Main Body */}
+        <path
+          d="M55 55 L25 75 L45 95 L45 230 L155 230 L155 95 L175 75 L145 55 L130 50 C120 42 80 42 70 50 Z"
+          fill={color}
+          stroke={borderColor}
+          strokeWidth="2"
+        />
+        {/* Hood Hanging on Back */}
+        <path
+          d="M70 50 C60 70 65 110 100 115 C135 110 140 70 130 50 C115 58 85 58 70 50 Z"
+          fill={color}
+          stroke={borderColor}
+          strokeWidth="2"
+        />
+      </svg>
+    )
+  }
+
+  // SLEEVE VIEWS (LEFT or RIGHT)
+  const isLeft = view === "LEFT_SLEEVE"
   return (
     <svg viewBox="0 0 200 240" className="w-full h-full">
+      {/* Torso Profile Background */}
       <path
-        d="M50 40 L30 60 L50 80 L50 220 L150 220 L150 80 L170 60 L150 40 L130 55 C120 35 80 35 70 55 Z"
+        d={isLeft ? "M110 40 L170 40 L170 220 L110 220 Z" : "M30 40 L90 40 L90 220 L30 220 Z"}
+        fill={color}
+        fillOpacity="0.4"
+        stroke={borderColor}
+        strokeWidth="1.5"
+        strokeDasharray="4 4"
+      />
+      {/* Main Sleeve Angle */}
+      <path
+        d={
+          isLeft
+            ? "M50 40 L110 40 L110 210 L50 210 Z"
+            : "M90 40 L150 40 L150 210 L90 210 Z"
+        }
         fill={color}
         stroke={borderColor}
         strokeWidth="2"
       />
-    </svg>
-  )
-}
-
-function sweatshirtSVG(color: string, borderColor: string) {
-  return (
-    <svg viewBox="0 0 200 240" className="w-full h-full">
+      {/* Shoulder Seam Curve */}
       <path
-        d="M50 40 L25 65 L45 85 L45 220 L155 220 L155 85 L175 65 L150 40 L135 50 C125 30 75 30 65 50 Z"
+        d={
+          isLeft
+            ? "M50 40 C75 30 100 30 110 40"
+            : "M90 40 C100 30 125 30 150 40"
+        }
         fill={color}
         stroke={borderColor}
         strokeWidth="2"
       />
+      {/* Cuff Hem */}
       <path
-        d="M45 220 L155 220 L155 230 L45 230 Z"
+        d={
+          isLeft
+            ? "M50 200 L110 200 L110 210 L50 210 Z"
+            : "M90 200 L150 200 L150 210 L90 210 Z"
+        }
         fill={color}
-        stroke={borderColor}
-        strokeWidth="2"
-      />
-    </svg>
-  )
-}
-
-function hoodieSVG(color: string, borderColor: string) {
-  return (
-    <svg viewBox="0 0 200 260" className="w-full h-full">
-      <path
-        d="M55 55 L25 75 L45 95 L45 230 L155 230 L155 95 L175 75 L145 55 L130 65 C120 40 80 40 70 65 Z"
-        fill={color}
-        stroke={borderColor}
-        strokeWidth="2"
-      />
-      <path
-        d="M70 65 C70 30 85 15 100 15 C115 15 130 30 130 65 L125 62 C125 38 113 25 100 25 C87 25 75 38 75 62 Z"
-        fill={color}
-        stroke={borderColor}
-        strokeWidth="2"
-      />
-      <path
-        d="M85 230 L85 255 C85 258 90 260 100 260 C110 260 115 258 115 255 L115 230"
-        fill="none"
         stroke={borderColor}
         strokeWidth="2"
       />
@@ -122,17 +382,40 @@ export default function CustomApparelPage() {
   const [apparelType, setApparelType] = useState<ApparelType>("TSHIRT")
   const [size, setSize] = useState<Size>("M")
   const [color, setColor] = useState("#000000")
-  const [numPrints, setNumPrints] = useState(1)
-  const [locations, setLocations] = useState<PrintLocation[]>(["Front"])
+  const [activeView, setActiveView] = useState<GarmentView>("FRONT")
+  
+  // Selected placements (preset IDs)
+  const [selectedPlacementIds, setSelectedPlacementIds] = useState<string[]>([
+    "front-center",
+  ])
+  
+  // Photo scale multiplier (0.5 to 1.5)
+  const [photoScale, setPhotoScale] = useState<number>(1.0)
+  
   const [designFile, setDesignFile] = useState<File | null>(null)
   const [designPreview, setDesignPreview] = useState<string | null>(null)
   const [shipping, setShipping] = useState<ShippingMethod>("STANDARD")
   const [showSuccess, setShowSuccess] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
 
+  // Current active preset for the visible view (if any)
+  const activePresetForView = useMemo(() => {
+    return PLACEMENT_PRESETS.find(
+      (p) => p.view === activeView && selectedPlacementIds.includes(p.id)
+    )
+  }, [activeView, selectedPlacementIds])
+
+  // Map chosen preset IDs to readable summary labels
+  const selectedPlacementLabels = useMemo(() => {
+    return selectedPlacementIds.map((id) => {
+      const preset = PLACEMENT_PRESETS.find((p) => p.id === id)
+      return preset ? `${preset.category} (${preset.label})` : id
+    })
+  }, [selectedPlacementIds])
+
   const basePrice = APPAREL_OPTIONS.find((o) => o.type === apparelType)!.basePrice
-  const additionalPrints = Math.max(0, locations.length - numPrints)
-  const extraPrintCost = additionalPrints * EXTRA_PRINT_COST
+  const additionalPrintsCount = Math.max(0, selectedPlacementIds.length - 1)
+  const extraPrintCost = additionalPrintsCount * EXTRA_PRINT_COST
   const xlSurcharge = size === "XL" ? XL_SURCHARGE : 0
   const shippingCost = shipping === "STANDARD" ? STANDARD_SHIPPING : RUSH_SHIPPING
   const rushSurcharge = shipping === "RUSH" ? RUSH_SHIPPING - STANDARD_SHIPPING : 0
@@ -142,18 +425,17 @@ export default function CustomApparelPage() {
 
   const formatPrice = (amount: number) => `$${amount.toFixed(2)} CAD`
 
-  const handleToggleLocation = useCallback(
-    (loc: PrintLocation) => {
-      setLocations((prev) => {
-        if (prev.includes(loc)) {
-          return prev.filter((l) => l !== loc)
-        }
-        if (prev.length >= numPrints + 5) return prev
-        return [...prev, loc]
-      })
-    },
-    [numPrints]
-  )
+  const handleTogglePreset = useCallback((preset: PlacementPreset) => {
+    setSelectedPlacementIds((prev) => {
+      if (prev.includes(preset.id)) {
+        if (prev.length === 1) return prev // keep at least 1 location
+        return prev.filter((id) => id !== preset.id)
+      }
+      return [...prev, preset.id]
+    })
+    // Automatically switch live preview view to match selected location
+    setActiveView(preset.view)
+  }, [])
 
   const processFile = useCallback((file: File) => {
     if (!ALLOWED_TYPES.includes(file.type)) {
@@ -208,7 +490,7 @@ export default function CustomApparelPage() {
       basePrice: Math.round(basePrice * 100),
       extraPrintCharge: Math.round(extraPrintCost * 100),
       xlSurcharge: Math.round(xlSurcharge * 100),
-      printLocations: locations,
+      printLocations: selectedPlacementLabels,
       designUrl: designPreview || undefined,
       designFile: designFile?.name || undefined,
       shippingMethod: shipping,
@@ -225,7 +507,7 @@ export default function CustomApparelPage() {
     basePrice,
     extraPrintCost,
     xlSurcharge,
-    locations,
+    selectedPlacementLabels,
     designPreview,
     designFile,
     shipping,
@@ -234,7 +516,7 @@ export default function CustomApparelPage() {
   ])
 
   const borderColor =
-    color === "#FFFFFF" || color === "#808080" ? "#e5e5e5" : color
+    color === "#FFFFFF" || color === "#808080" ? "#d4d4d4" : color
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -244,55 +526,146 @@ export default function CustomApparelPage() {
             Custom Apparel Builder
           </h1>
           <p className="mt-2 text-neutral-500">
-            Design your perfect piece. Select options and see your creation come
-            to life.
+            Choose your garment, upload your photo, and place it exactly where you want it.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
-          {/* Left Column - Live Preview */}
+          {/* Left Column - Live Preview with Garment View Tabs */}
           <div className="lg:col-span-2">
             <div className="sticky top-24">
-              <div className="rounded-2xl border border-neutral-200 bg-white p-8 shadow-sm">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-medium uppercase tracking-wider text-neutral-400">
-                    Live Preview
-                  </span>
-                  <span className="text-xs text-neutral-400">
-                    {APPAREL_OPTIONS.find((o) => o.type === apparelType)!.label}{" "}
-                    &middot; {size} &middot;{" "}
-                    {COLOR_OPTIONS.find((c) => c.hex === color)?.name}
-                  </span>
+              <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+                
+                {/* View Switcher Header Tabs */}
+                <div className="mb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                      Garment View Angle
+                    </span>
+                    <span className="text-xs text-neutral-500 font-medium">
+                      {COLOR_OPTIONS.find((c) => c.hex === color)?.name} &middot; {size}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-4 gap-1 rounded-xl bg-neutral-100 p-1">
+                    {(
+                      [
+                        { id: "FRONT", label: "Front" },
+                        { id: "BACK", label: "Back" },
+                        { id: "LEFT_SLEEVE", label: "L. Sleeve" },
+                        { id: "RIGHT_SLEEVE", label: "R. Sleeve" },
+                      ] as { id: GarmentView; label: string }[]
+                    ).map((tab) => {
+                      const isActive = activeView === tab.id
+                      const hasPlacementInView = PLACEMENT_PRESETS.some(
+                        (p) => p.view === tab.id && selectedPlacementIds.includes(p.id)
+                      )
+                      return (
+                        <button
+                          key={tab.id}
+                          onClick={() => setActiveView(tab.id)}
+                          className={`relative rounded-lg py-1.5 text-xs font-semibold transition-all ${
+                            isActive
+                              ? "bg-white text-black shadow-sm"
+                              : "text-neutral-500 hover:text-black"
+                          }`}
+                        >
+                          {tab.label}
+                          {hasPlacementInView && (
+                            <span className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-black" />
+                          )}
+                        </button>
+                      )
+                    })}
+                  </div>
                 </div>
 
-                <div className="relative flex aspect-[3/4] items-center justify-center rounded-xl bg-neutral-100 overflow-hidden">
-                  <div className="relative w-3/4 h-3/4">
-                    {apparelType === "TSHIRT" && tshirtSVG(color, borderColor)}
-                    {apparelType === "SWEATSHIRT" &&
-                      sweatshirtSVG(color, borderColor)}
-                    {apparelType === "HOODIE" && hoodieSVG(color, borderColor)}
+                {/* SVG Live Canvas Container */}
+                <div className="relative flex aspect-[3/4] items-center justify-center rounded-xl bg-neutral-100 overflow-hidden border border-neutral-200">
+                  <div className="relative w-3/4 h-3/4 flex items-center justify-center">
+                    <RenderGarmentSVG
+                      type={apparelType}
+                      view={activeView}
+                      color={color}
+                      borderColor={borderColor}
+                    />
 
-                    {designPreview && (
-                      <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Dotted Placement Boundary Box for Active View */}
+                    {activePresetForView && (
+                      <div
+                        className="absolute border-2 border-dashed border-black/40 rounded-md transition-all duration-300 pointer-events-none flex items-center justify-center bg-black/5"
+                        style={{
+                          left: `${activePresetForView.xPercent}%`,
+                          top: `${activePresetForView.yPercent}%`,
+                          width: `${activePresetForView.baseWidthPercent * photoScale}%`,
+                          height: `${activePresetForView.baseHeightPercent * photoScale}%`,
+                          transform: "translate(-50%, -50%)",
+                        }}
+                      >
+                        {!designPreview && (
+                          <span className="text-[10px] font-semibold text-neutral-700 bg-white/90 px-1.5 py-0.5 rounded shadow-sm">
+                            {activePresetForView.label}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Photo Overlay inside Active Placement */}
+                    {designPreview && activePresetForView && (
+                      <div
+                        className="absolute transition-all duration-300 flex items-center justify-center"
+                        style={{
+                          left: `${activePresetForView.xPercent}%`,
+                          top: `${activePresetForView.yPercent}%`,
+                          width: `${activePresetForView.baseWidthPercent * photoScale}%`,
+                          height: `${activePresetForView.baseHeightPercent * photoScale}%`,
+                          transform: "translate(-50%, -50%)",
+                        }}
+                      >
                         <img
                           src={designPreview}
-                          alt="Your design"
-                          className="max-h-[45%] max-w-[50%] object-contain drop-shadow-md"
+                          alt="Your photo"
+                          className="max-h-full max-w-full object-contain drop-shadow-md"
                         />
                       </div>
                     )}
                   </div>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {locations.map((loc) => (
-                    <span
-                      key={loc}
-                      className="inline-flex items-center rounded-full bg-black px-2.5 py-0.5 text-xs font-medium text-white"
-                    >
-                      {loc}
-                    </span>
-                  ))}
+                {/* Photo Scale Adjustment Slider */}
+                {designPreview && (
+                  <div className="mt-4 rounded-xl bg-neutral-50 p-3 border border-neutral-200">
+                    <div className="flex justify-between text-xs font-medium text-neutral-600 mb-1.5">
+                      <span>Photo Scale / Size</span>
+                      <span>{Math.round(photoScale * 100)}%</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0.5"
+                      max="1.5"
+                      step="0.05"
+                      value={photoScale}
+                      onChange={(e) => setPhotoScale(parseFloat(e.target.value))}
+                      className="w-full accent-black cursor-pointer"
+                    />
+                  </div>
+                )}
+
+                {/* Selected Placements Summary Badge List */}
+                <div className="mt-4">
+                  <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider block mb-1.5">
+                    Selected Placements ({selectedPlacementIds.length}):
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedPlacementLabels.map((lbl) => (
+                      <span
+                        key={lbl}
+                        className="inline-flex items-center rounded-full bg-black px-2.5 py-0.5 text-xs font-medium text-white shadow-sm"
+                      >
+                        {lbl}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -386,109 +759,116 @@ export default function CustomApparelPage() {
               </div>
             </section>
 
-            {/* Prints & Locations */}
+            {/* Specific Photo Placements (Front, Back, Sleeves) */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-2">
-                Prints &amp; Locations
-              </h2>
-              <p className="text-xs text-neutral-500 mb-4">
-                1 included, +${EXTRA_PRINT_COST.toFixed(0)} each additional
-              </p>
-
-              <div className="flex items-center gap-3 mb-5">
-                <button
-                  onClick={() =>
-                    setNumPrints((p) => {
-                      const next = Math.max(1, p - 1)
-                      if (locations.length > next) {
-                        setLocations((l) => l.slice(0, next))
-                      }
-                      return next
-                    })
-                  }
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-300 text-lg font-medium text-black hover:bg-neutral-100 transition-colors"
-                >
-                  &minus;
-                </button>
-                <span className="w-8 text-center text-lg font-semibold text-black">
-                  {numPrints}
-                </span>
-                <button
-                  onClick={() => setNumPrints((p) => Math.min(6, p + 1))}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-300 text-lg font-medium text-black hover:bg-neutral-100 transition-colors"
-                >
-                  +
-                </button>
-                <span className="text-xs text-neutral-400 ml-1">
-                  prints
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900">
+                  Photo Placement Locations
+                </h2>
+                <span className="text-xs font-semibold text-neutral-500">
+                  1st included, +${EXTRA_PRINT_COST.toFixed(0)} each extra
                 </span>
               </div>
+              <p className="text-xs text-neutral-500 mb-4">
+                Select where your photo should be printed on the garment. Click any location to preview its placement.
+              </p>
 
-              <div className="space-y-2.5">
-                {PRINT_LOCATIONS.map((loc) => {
-                  const checked = locations.includes(loc)
-                  return (
-                    <label
-                      key={loc}
-                      className={`flex items-center gap-3 rounded-lg border px-4 py-2.5 cursor-pointer transition-all duration-150 ${
-                        checked
-                          ? "border-black bg-neutral-50"
-                          : "border-neutral-200 bg-white hover:border-neutral-300"
-                      }`}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={checked}
-                        onChange={() => handleToggleLocation(loc)}
-                        className="sr-only"
-                      />
+              <div className="space-y-4">
+                {(["Front", "Back", "Left Sleeve", "Right Sleeve"] as const).map(
+                  (cat) => {
+                    const presetsForCat = PLACEMENT_PRESETS.filter(
+                      (p) => p.category === cat
+                    )
+                    return (
                       <div
-                        className={`flex h-5 w-5 items-center justify-center rounded border-2 transition-all duration-150 ${
-                          checked
-                            ? "border-black bg-black"
-                            : "border-neutral-300 bg-white"
-                        }`}
+                        key={cat}
+                        className="rounded-xl border border-neutral-200 bg-neutral-50 p-3.5"
                       >
-                        {checked && (
-                          <svg
-                            className="h-3 w-3 text-white"
-                            viewBox="0 0 12 12"
-                            fill="none"
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-bold text-black uppercase tracking-wider">
+                            {cat} Locations
+                          </span>
+                          <button
+                            onClick={() => {
+                              const viewMap: Record<string, GarmentView> = {
+                                Front: "FRONT",
+                                Back: "BACK",
+                                "Left Sleeve": "LEFT_SLEEVE",
+                                "Right Sleeve": "RIGHT_SLEEVE",
+                              }
+                              setActiveView(viewMap[cat])
+                            }}
+                            className="text-[11px] font-semibold text-neutral-500 hover:text-black underline"
                           >
-                            <path
-                              d="M2.5 6L5 8.5L9.5 3.5"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
-                        )}
+                            View {cat}
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {presetsForCat.map((preset) => {
+                            const isChecked = selectedPlacementIds.includes(
+                              preset.id
+                            )
+                            return (
+                              <button
+                                key={preset.id}
+                                onClick={() => handleTogglePreset(preset)}
+                                className={`flex items-center justify-between rounded-lg border px-3 py-2 text-left transition-all ${
+                                  isChecked
+                                    ? "border-black bg-white shadow-sm ring-1 ring-black"
+                                    : "border-neutral-200 bg-white hover:border-neutral-300"
+                                }`}
+                              >
+                                <div className="flex items-center gap-2 min-w-0">
+                                  <div
+                                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-colors ${
+                                      isChecked
+                                        ? "border-black bg-black text-white"
+                                        : "border-neutral-300 bg-white"
+                                    }`}
+                                  >
+                                    {isChecked && (
+                                      <svg
+                                        className="h-3 w-3"
+                                        viewBox="0 0 12 12"
+                                        fill="none"
+                                      >
+                                        <path
+                                          d="M2.5 6L5 8.5L9.5 3.5"
+                                          stroke="currentColor"
+                                          strokeWidth="2"
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                        />
+                                      </svg>
+                                    )}
+                                  </div>
+                                  <span className="text-xs font-semibold text-neutral-900 truncate">
+                                    {preset.label}
+                                  </span>
+                                </div>
+                                {isChecked && (
+                                  <span className="text-[10px] font-medium text-neutral-500 ml-1">
+                                    {selectedPlacementIds[0] === preset.id
+                                      ? "Primary"
+                                      : `+$${EXTRA_PRINT_COST}`}
+                                  </span>
+                                )}
+                              </button>
+                            )
+                          })}
+                        </div>
                       </div>
-                      <span className="text-sm font-medium text-black">
-                        {loc}
-                      </span>
-                      <span className="ml-auto text-xs text-neutral-400">
-                        {checked && locations[0] === loc ? (
-                          <span className="text-green-600 font-medium">
-                            Included
-                          </span>
-                        ) : checked ? (
-                          <span className="text-amber-600 font-medium">
-                            +${EXTRA_PRINT_COST.toFixed(2)}
-                          </span>
-                        ) : null}
-                      </span>
-                    </label>
-                  )
-                })}
+                    )
+                  }
+                )}
               </div>
             </section>
 
             {/* Design Upload */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-4">
-                Design Upload
+                Upload Your Photo / Design
               </h2>
 
               {designPreview ? (
@@ -496,7 +876,7 @@ export default function CustomApparelPage() {
                   <img
                     src={designPreview}
                     alt="Uploaded design preview"
-                    className="h-16 w-16 rounded-lg object-contain bg-white border border-neutral-200"
+                    className="h-16 w-16 rounded-lg object-contain bg-white border border-neutral-200 shadow-sm"
                   />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-black truncate">
@@ -555,7 +935,7 @@ export default function CustomApparelPage() {
                     />
                   </svg>
                   <p className="text-sm font-medium text-black">
-                    Click to browse or drag &amp; drop
+                    Click to browse or drag &amp; drop photo
                   </p>
                   <p className="mt-1 text-xs text-neutral-400">
                     PNG, JPG, JPEG, SVG &middot; Max 10MB
@@ -575,7 +955,7 @@ export default function CustomApparelPage() {
             {/* Shipping */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-4">
-                Shipping
+                Shipping Option
               </h2>
               <div className="space-y-3">
                 {(
@@ -651,8 +1031,7 @@ export default function CustomApparelPage() {
                 {extraPrintCost > 0 && (
                   <div className="flex justify-between text-sm">
                     <span className="text-neutral-500">
-                      Extra prints ({locations.length - numPrints} &times; $
-                      {EXTRA_PRINT_COST.toFixed(0)})
+                      Extra placements ({additionalPrintsCount} &times; ${EXTRA_PRINT_COST.toFixed(0)})
                     </span>
                     <span className="font-medium text-black">
                       +{formatPrice(extraPrintCost)}
@@ -709,7 +1088,7 @@ export default function CustomApparelPage() {
             <button
               onClick={handleAddToCart}
               disabled={showSuccess}
-              className="w-full rounded-xl bg-black py-4 text-base font-semibold text-white transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+              className="w-full rounded-xl bg-black py-4 text-base font-semibold text-white transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed shadow-lg"
             >
               {showSuccess ? (
                 <span className="inline-flex items-center gap-2">
@@ -727,7 +1106,7 @@ export default function CustomApparelPage() {
                   Added to Cart!
                 </span>
               ) : (
-                "Add to Cart"
+                "Add Custom Garment to Cart"
               )}
             </button>
           </div>
