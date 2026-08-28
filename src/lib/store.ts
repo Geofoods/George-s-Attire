@@ -15,6 +15,7 @@ export interface CartItem {
   printLocations: string[]
   designUrl?: string
   designFile?: string
+  locationDesigns?: Array<{ location: string; designUrl?: string; designFile?: string }>
   shippingMethod: 'STANDARD' | 'RUSH'
 }
 
