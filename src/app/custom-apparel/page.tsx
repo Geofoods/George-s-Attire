@@ -11,12 +11,18 @@ import navyShirt from "../../../shirts/navy.webp"
 type ApparelType = "TSHIRT" | "SWEATSHIRT" | "HOODIE"
 type Size = "S" | "M" | "L" | "XL"
 type ShippingMethod = "STANDARD" | "RUSH"
-export type GarmentView = "FRONT" | "BACK" | "LEFT_SLEEVE" | "RIGHT_SLEEVE"
+export type GarmentView = "FRONT" | "BACK"
 
 export interface PlacementPreset {
   id: string
   label: string
-  category: "Front" | "Back" | "Left Sleeve" | "Right Sleeve"
+  category:
+    | "Front"
+    | "Back"
+    | "Front Left Sleeve"
+    | "Front Right Sleeve"
+    | "Back Left Sleeve"
+    | "Back Right Sleeve"
   view: GarmentView
   xPercent: number
   yPercent: number
@@ -129,47 +135,49 @@ const PLACEMENT_PRESETS: PlacementPreset[] = [
     baseWidthPercent: 36,
     baseHeightPercent: 25,
   },
-  // LEFT SLEEVE
+  // FRONT LEFT SLEEVE
   {
-    id: "left-sleeve-shoulder",
-    label: "Upper Shoulder / Bicep",
-    category: "Left Sleeve",
-    view: "LEFT_SLEEVE",
-    xPercent: 45,
-    yPercent: 38,
-    baseWidthPercent: 24,
-    baseHeightPercent: 24,
+    id: "front-left-sleeve",
+    label: "Left Sleeve",
+    category: "Front Left Sleeve",
+    view: "FRONT",
+    xPercent: 14,
+    yPercent: 27,
+    baseWidthPercent: 17,
+    baseHeightPercent: 15,
   },
+  // FRONT RIGHT SLEEVE
   {
-    id: "left-sleeve-cuff",
-    label: "Lower Forearm / Cuff",
-    category: "Left Sleeve",
-    view: "LEFT_SLEEVE",
-    xPercent: 45,
-    yPercent: 64,
-    baseWidthPercent: 20,
-    baseHeightPercent: 20,
+    id: "front-right-sleeve",
+    label: "Right Sleeve",
+    category: "Front Right Sleeve",
+    view: "FRONT",
+    xPercent: 86,
+    yPercent: 27,
+    baseWidthPercent: 17,
+    baseHeightPercent: 15,
   },
-  // RIGHT SLEEVE
+  // BACK LEFT SLEEVE
   {
-    id: "right-sleeve-shoulder",
-    label: "Upper Shoulder / Bicep",
-    category: "Right Sleeve",
-    view: "RIGHT_SLEEVE",
-    xPercent: 55,
-    yPercent: 38,
-    baseWidthPercent: 24,
-    baseHeightPercent: 24,
+    id: "back-left-sleeve",
+    label: "Left Sleeve",
+    category: "Back Left Sleeve",
+    view: "BACK",
+    xPercent: 14,
+    yPercent: 27,
+    baseWidthPercent: 17,
+    baseHeightPercent: 15,
   },
+  // BACK RIGHT SLEEVE
   {
-    id: "right-sleeve-cuff",
-    label: "Lower Forearm / Cuff",
-    category: "Right Sleeve",
-    view: "RIGHT_SLEEVE",
-    xPercent: 55,
-    yPercent: 64,
-    baseWidthPercent: 20,
-    baseHeightPercent: 20,
+    id: "back-right-sleeve",
+    label: "Right Sleeve",
+    category: "Back Right Sleeve",
+    view: "BACK",
+    xPercent: 86,
+    yPercent: 27,
+    baseWidthPercent: 17,
+    baseHeightPercent: 15,
   },
 ]
 
@@ -321,50 +329,6 @@ function RenderGarmentSVG({
       </svg>
     )
   }
-
-  const isLeft = view === "LEFT_SLEEVE"
-  return (
-    <svg viewBox="0 0 200 240" className="w-full h-full">
-      <path
-        d={isLeft ? "M110 40 L170 40 L170 220 L110 220 Z" : "M30 40 L90 40 L90 220 L30 220 Z"}
-        fill={color}
-        fillOpacity="0.4"
-        stroke={borderColor}
-        strokeWidth="1.5"
-        strokeDasharray="4 4"
-      />
-      <path
-        d={
-          isLeft
-            ? "M50 40 L110 40 L110 210 L50 210 Z"
-            : "M90 40 L150 40 L150 210 L90 210 Z"
-        }
-        fill={color}
-        stroke={borderColor}
-        strokeWidth="2"
-      />
-      <path
-        d={
-          isLeft
-            ? "M50 40 C75 30 100 30 110 40"
-            : "M90 40 C100 30 125 30 150 40"
-        }
-        fill={color}
-        stroke={borderColor}
-        strokeWidth="2"
-      />
-      <path
-        d={
-          isLeft
-            ? "M50 200 L110 200 L110 210 L50 210 Z"
-            : "M90 200 L150 200 L150 210 L90 210 Z"
-        }
-        fill={color}
-        stroke={borderColor}
-        strokeWidth="2"
-      />
-    </svg>
-  )
 }
 
 export default function CustomApparelPage() {
@@ -605,13 +569,11 @@ export default function CustomApparelPage() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-4 gap-1 rounded-xl bg-neutral-100 p-1">
+                  <div className="grid grid-cols-2 gap-1 rounded-xl bg-neutral-100 p-1">
                     {(
                       [
                         { id: "FRONT", label: "Front" },
                         { id: "BACK", label: "Back" },
-                        { id: "LEFT_SLEEVE", label: "L. Sleeve" },
-                        { id: "RIGHT_SLEEVE", label: "R. Sleeve" },
                       ] as { id: GarmentView; label: string }[]
                     ).map((tab) => {
                       const isActive = activeView === tab.id
@@ -883,7 +845,16 @@ export default function CustomApparelPage() {
               </p>
 
               <div className="space-y-4">
-                {(["Front", "Back", "Left Sleeve", "Right Sleeve"] as const).map(
+                {(
+                    [
+                      "Front",
+                      "Back",
+                      "Front Left Sleeve",
+                      "Front Right Sleeve",
+                      "Back Left Sleeve",
+                      "Back Right Sleeve",
+                    ] as const
+                  ).map(
                   (cat) => {
                     const presetsForCat = PLACEMENT_PRESETS.filter(
                       (p) => p.category === cat

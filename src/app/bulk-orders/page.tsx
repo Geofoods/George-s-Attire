@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import Link from "next/link";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -115,12 +116,12 @@ export default function BulkOrdersPage() {
               shortly. Expect a custom quote in your inbox within 1–2 business
               days.
             </p>
-            <a
+            <Link
               href="/"
               className="mt-8 inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </section>
       </div>
@@ -175,6 +176,37 @@ export default function BulkOrdersPage() {
           onSubmit={handleSubmit}
           className="mx-auto max-w-3xl space-y-10"
         >
+          {/* Pricing Reference */}
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              { label: "Starting prices", value: "T-Shirts $10 · Sweatshirts $20 · Hoodies $30" },
+              { label: "Bulk minimum", value: "Quotes start at 10 pieces" },
+              { label: "Response time", value: "Custom quote in 1–2 business days" },
+            ].map((card) => (
+              <div
+                key={card.label}
+                className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5"
+              >
+                <p className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+                  {card.label}
+                </p>
+                <p className="mt-2 text-sm font-medium leading-relaxed text-black">
+                  {card.value}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-neutral-500">
+            Looking for a single item instead?{" "}
+            <Link
+              href="/custom-apparel"
+              className="font-medium text-black underline underline-offset-2 hover:text-neutral-700"
+            >
+              Build one in the custom apparel studio →
+            </Link>
+          </p>
+          <div className="h-px bg-neutral-100" />
+
           {/* Contact Info */}
           <fieldset>
             <legend className="text-sm font-semibold uppercase tracking-[0.15em] text-black">

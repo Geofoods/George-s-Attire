@@ -8,8 +8,8 @@ import { useCartStore } from "@/lib/store"
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
-  { href: "/custom-apparel", label: "Custom Apparel" },
-  { href: "/bulk-orders", label: "Bulk Orders" },
+  { href: "/organizations", label: "Organizations" },
+  { href: "/how-it-works", label: "How It Works" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ]
@@ -73,6 +73,13 @@ export default function Navigation() {
           </ul>
 
           <div className="flex items-center gap-3">
+            <Link
+              href="/custom-apparel"
+              className="hidden h-10 items-center rounded-full bg-black px-5 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800 lg:inline-flex"
+            >
+              Start an Order
+            </Link>
+
             <Link
               href="/cart"
               className="relative flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 hover:text-black"
@@ -235,6 +242,12 @@ export default function Navigation() {
           </div>
 
           <div className="border-t border-neutral-200 px-4 py-4">
+            <Link
+              href="/custom-apparel"
+              className="mb-3 flex w-full items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800"
+            >
+              Start an Order
+            </Link>
             <Link
               href="/cart"
               className="flex w-full items-center justify-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800"
