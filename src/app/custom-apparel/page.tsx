@@ -4,6 +4,10 @@ import { useState, useRef, useCallback, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import { useCartStore } from "@/lib/store"
 
+import blackShirt from "../../../shirts/black.webp"
+import whiteShirt from "../../../shirts/white.webp"
+import navyShirt from "../../../shirts/navy.webp"
+
 type ApparelType = "TSHIRT" | "SWEATSHIRT" | "HOODIE"
 type Size = "S" | "M" | "L" | "XL"
 type ShippingMethod = "STANDARD" | "RUSH"
@@ -35,6 +39,7 @@ interface ApparelOption {
 interface ColorOption {
   name: string
   hex: string
+  image: string
 }
 
 const APPAREL_OPTIONS: ApparelOption[] = [
@@ -46,10 +51,9 @@ const APPAREL_OPTIONS: ApparelOption[] = [
 const SIZE_OPTIONS: Size[] = ["S", "M", "L", "XL"]
 
 const COLOR_OPTIONS: ColorOption[] = [
-  { name: "Black", hex: "#000000" },
-  { name: "White", hex: "#FFFFFF" },
-  { name: "Gray", hex: "#808080" },
-  { name: "Navy", hex: "#1a1a2e" },
+  { name: "Black", hex: "#000000", image: blackShirt.src },
+  { name: "White", hex: "#FFFFFF", image: whiteShirt.src },
+  { name: "Navy", hex: "#1a1a2e", image: navyShirt.src },
 ]
 
 const PLACEMENT_PRESETS: PlacementPreset[] = [
@@ -568,6 +572,8 @@ export default function CustomApparelPage() {
   const borderColor =
     color === "#FFFFFF" || color === "#808080" ? "#d4d4d4" : color
 
+  const selectedColorOption = COLOR_OPTIONS.find((c) => c.hex === color)
+
   const currentLocationDesign = designsByLocation[currentActiveTargetId]
 
   return (
@@ -638,15 +644,23 @@ export default function CustomApparelPage() {
                   </div>
                 </div>
 
-                {/* SVG Live Canvas Container */}
+                {/* Live Preview Canvas */}
                 <div className="relative flex aspect-[3/4] items-center justify-center rounded-xl bg-neutral-100 overflow-hidden border border-neutral-200">
                   <div className="relative w-3/4 h-3/4 flex items-center justify-center">
-                    <RenderGarmentSVG
-                      type={apparelType}
-                      view={activeView}
-                      color={color}
-                      borderColor={borderColor}
-                    />
+                    {selectedColorOption ? (
+                      <img
+                        src={selectedColorOption.image}
+                        alt={`${selectedColorOption.name} shirt preview`}
+                        className="h-full w-full object-contain drop-shadow-sm"
+                      />
+                    ) : (
+                      <RenderGarmentSVG
+                        type={apparelType}
+                        view={activeView}
+                        color={color}
+                        borderColor={borderColor}
+                      />
+                    )}
 
                     {/* Render all selected placement bounding boxes and images for the current active view */}
                     {presetsInActiveView.map((preset) => {
@@ -836,13 +850,18 @@ export default function CustomApparelPage() {
                     className="group flex flex-col items-center gap-2"
                   >
                     <div
-                      className={`relative h-10 w-10 rounded-full transition-all duration-150 ${
+                      className={`relative h-16 w-16 overflow-hidden rounded-xl bg-white transition-all duration-150 ${
                         color === c.hex
                           ? "ring-2 ring-offset-2 ring-black"
                           : "ring-1 ring-offset-1 ring-neutral-300 hover:ring-neutral-400"
                       }`}
-                      style={{ backgroundColor: c.hex }}
-                    />
+                    >
+                      <img
+                        src={c.image}
+                        alt={`${c.name} shirt`}
+                        className="h-full w-full object-contain"
+                      />
+                    </div>
                     <span className="text-xs text-neutral-500">{c.name}</span>
                   </button>
                 ))}
