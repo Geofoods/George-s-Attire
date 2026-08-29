@@ -1,5 +1,6 @@
 import "dotenv/config";
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
+import path from "path";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
@@ -7,6 +8,10 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: env("DATABASE_URL"),
+    // Fall back to a local SQLite file so `prisma generate` works on Vercel
+    // even when DATABASE_URL is not set in the build environment.
+    url:
+      process.env.DATABASE_URL ??
+      `file:${path.join(process.cwd(), "prisma", "dev.db")}`,
   },
 });

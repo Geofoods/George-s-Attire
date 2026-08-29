@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 
 export const metadata = {
   title: "Shop | George's Attire",
@@ -55,7 +56,7 @@ export default async function ShopPage() {
             </div>
           ) : (
             <div className="grid gap-8 sm:grid-cols-3">
-              {products.map((product) => (
+              {products.map((product: Prisma.ProductGetPayload<{}>) => (
                 <div
                   key={product.id}
                   className="rounded-2xl border border-neutral-200 bg-white"

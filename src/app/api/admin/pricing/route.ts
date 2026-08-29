@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 
 export async function GET() {
   try {
@@ -30,7 +31,9 @@ export async function GET() {
     };
 
     for (const [key, def] of Object.entries(defaults)) {
-      const existing = configs.find((c) => c.key === key);
+      const existing = configs.find(
+        (c: Prisma.PricingConfigGetPayload<{}>) => c.key === key
+      );
       if (!existing) {
         await prisma.pricingConfig.create({
           data: { key, value: def.value, description: def.description },
