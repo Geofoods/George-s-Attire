@@ -192,10 +192,10 @@ export default function ContactPage() {
                   Email
                 </h3>
                 <a
-                  href="mailto:hello@georgesattire.com"
+                  href="mailto:georgesunreal@gmail.com"
                   className="mt-2 block text-sm text-neutral-500 transition-colors hover:text-black"
                 >
-                  hello@georgesattire.com
+                  georgesunreal@gmail.com
                 </a>
               </div>
 
@@ -203,9 +203,12 @@ export default function ContactPage() {
                 <h3 className="text-sm font-semibold uppercase tracking-[0.15em] text-black">
                   Phone
                 </h3>
-                <p className="mt-2 text-sm text-neutral-500">
-                  Coming soon
-                </p>
+                <a
+                  href="tel:+16136195185"
+                  className="mt-2 block text-sm text-neutral-500 transition-colors hover:text-black"
+                >
+                  613 619 5185
+                </a>
               </div>
 
               <div>

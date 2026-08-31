@@ -1,12 +1,18 @@
 "use client"
 
-import { useState, useRef, useCallback, useMemo } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useRef, useCallback, useMemo, Suspense } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useCartStore } from "@/lib/store"
 
 import blackShirt from "../../../shirts/black.webp"
 import whiteShirt from "../../../shirts/white.webp"
 import navyShirt from "../../../shirts/navy.webp"
+import blackHoodie from "../../../hoddies/black.jpg"
+import whiteHoodie from "../../../hoddies/white.webp"
+import navyHoodie from "../../../hoddies/navy.jpg"
+import blackSweatshirt from "../../../sweatshirts/black.webp"
+import whiteSweatshirt from "../../../sweatshirts/white.jpg"
+import navySweatshirt from "../../../sweatshirts/navy.jpg"
 
 type ApparelType = "TSHIRT" | "SWEATSHIRT" | "HOODIE"
 type Size = "S" | "M" | "L" | "XL"
@@ -46,6 +52,8 @@ interface ColorOption {
   name: string
   hex: string
   image: string
+  hoodieImage?: string
+  sweatshirtImage?: string
 }
 
 const APPAREL_OPTIONS: ApparelOption[] = [
@@ -57,9 +65,9 @@ const APPAREL_OPTIONS: ApparelOption[] = [
 const SIZE_OPTIONS: Size[] = ["S", "M", "L", "XL"]
 
 const COLOR_OPTIONS: ColorOption[] = [
-  { name: "Black", hex: "#000000", image: blackShirt.src },
-  { name: "White", hex: "#FFFFFF", image: whiteShirt.src },
-  { name: "Navy", hex: "#1a1a2e", image: navyShirt.src },
+  { name: "Black", hex: "#000000", image: blackShirt.src, hoodieImage: blackHoodie.src, sweatshirtImage: blackSweatshirt.src },
+  { name: "White", hex: "#FFFFFF", image: whiteShirt.src, hoodieImage: whiteHoodie.src, sweatshirtImage: whiteSweatshirt.src },
+  { name: "Navy", hex: "#1a1a2e", image: navyShirt.src, hoodieImage: navyHoodie.src, sweatshirtImage: navySweatshirt.src },
 ]
 
 const PLACEMENT_PRESETS: PlacementPreset[] = [
@@ -331,12 +339,20 @@ function RenderGarmentSVG({
   }
 }
 
-export default function CustomApparelPage() {
+function CustomApparelBuilder() {
   const router = useRouter()
   const addItem = useCartStore((s) => s.addItem)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const [apparelType, setApparelType] = useState<ApparelType>("TSHIRT")
+  const searchParams = useSearchParams()
+  const productParam = searchParams.get("product")
+  const initialType = (["TSHIRT", "SWEATSHIRT", "HOODIE"] as ApparelType[]).includes(
+    productParam as ApparelType
+  )
+    ? (productParam as ApparelType)
+    : "TSHIRT"
+
+  const [apparelType, setApparelType] = useState<ApparelType>(initialType)
   const [size, setSize] = useState<Size>("M")
   const [color, setColor] = useState("#000000")
   const [activeView, setActiveView] = useState<GarmentView>("FRONT")
@@ -537,6 +553,12 @@ export default function CustomApparelPage() {
     color === "#FFFFFF" || color === "#808080" ? "#d4d4d4" : color
 
   const selectedColorOption = COLOR_OPTIONS.find((c) => c.hex === color)
+  const garmentImage =
+    apparelType === "HOODIE"
+      ? selectedColorOption?.hoodieImage
+      : apparelType === "SWEATSHIRT"
+        ? selectedColorOption?.sweatshirtImage
+        : selectedColorOption?.image
 
   const currentLocationDesign = designsByLocation[currentActiveTargetId]
 
@@ -607,13 +629,13 @@ export default function CustomApparelPage() {
                 </div>
 
                 {/* Live Preview Canvas */}
-                <div className="relative flex aspect-[3/4] items-center justify-center rounded-xl bg-neutral-100 overflow-hidden border border-neutral-200">
+                <div className="relative flex aspect-[3/4] items-center justify-center rounded-xl bg-white overflow-hidden border border-neutral-200">
                   <div className="relative w-3/4 h-3/4 flex items-center justify-center">
-                    {selectedColorOption ? (
+                    {garmentImage ? (
                       <img
-                        src={selectedColorOption.image}
-                        alt={`${selectedColorOption.name} shirt preview`}
-                        className="h-full w-full object-contain drop-shadow-sm"
+                        src={garmentImage}
+                        alt={`${selectedColorOption?.name} ${apparelType.toLowerCase()} preview`}
+                        className="h-full w-full object-contain drop-shadow-sm mix-blend-multiply"
                       />
                     ) : (
                       <RenderGarmentSVG
@@ -819,9 +841,15 @@ export default function CustomApparelPage() {
                       }`}
                     >
                       <img
-                        src={c.image}
-                        alt={`${c.name} shirt`}
-                        className="h-full w-full object-contain"
+                        src={
+                          apparelType === "HOODIE"
+                            ? c.hoodieImage || c.image
+                            : apparelType === "SWEATSHIRT"
+                              ? c.sweatshirtImage || c.image
+                              : c.image
+                        }
+                        alt={`${c.name} ${apparelType.toLowerCase()}`}
+                        className="h-full w-full object-contain mix-blend-multiply"
                       />
                     </div>
                     <span className="text-xs text-neutral-500">{c.name}</span>
@@ -1257,5 +1285,13 @@ export default function CustomApparelPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function CustomApparelPage() {
+  return (
+    <Suspense>
+      <CustomApparelBuilder />
+    </Suspense>
   )
 }

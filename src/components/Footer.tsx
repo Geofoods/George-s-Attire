@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const shopLinks = [
   { href: "/shop", label: "Shop All" },
@@ -50,8 +51,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <div>
-            <Link href="/" className="text-lg font-bold uppercase tracking-[0.2em]">
-              George&apos;s Attire
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/georgeattire-logo.png"
+                alt="George's Attire logo"
+                width={80}
+                height={80}
+                className="h-14 w-14 rounded-full object-cover"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-neutral-400">
               Custom apparel made your way. T-shirts, sweatshirts, and hoodies

@@ -1,5 +1,9 @@
 import prisma from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
+import Image from "next/image";
+import blackShirt from "../../../shirts/black.webp";
+import blackSweatshirt from "../../../sweatshirts/black.webp";
+import blackHoodie from "../../../hoddies/black.jpg";
 
 export const metadata = {
   title: "Shop | George's Attire",
@@ -8,18 +12,22 @@ export const metadata = {
 };
 
 function ProductPlaceholder({ type }: { type: string }) {
-  const label =
+  const image =
     type === "TSHIRT"
-      ? "T-Shirt"
+      ? blackShirt
       : type === "SWEATSHIRT"
-        ? "Sweatshirt"
-        : "Hoodie";
+        ? blackSweatshirt
+        : blackHoodie;
 
   return (
-    <div className="flex h-72 items-center justify-center rounded-t-2xl bg-neutral-100">
-      <span className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-300">
-        {label}
-      </span>
+    <div className="relative h-72 overflow-hidden rounded-t-2xl bg-white">
+      <Image
+        src={image}
+        alt={`${type.toLowerCase()} apparel`}
+        fill
+        sizes="(max-width: 640px) 100vw, 33vw"
+        className="object-contain p-6 mix-blend-multiply"
+      />
     </div>
   );
 }

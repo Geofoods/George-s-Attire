@@ -1,5 +1,9 @@
 import Link from "next/link";
 import QuoteCalculator from "@/components/QuoteCalculator";
+import Image from "next/image";
+import blackShirt from "../../shirts/black.webp";
+import blackSweatshirt from "../../sweatshirts/black.webp";
+import blackHoodie from "../../hoddies/black.jpg";
 
 const REVIEWS_URL = "https://g.page/r/CXtdMKndtrHkEAE/review";
 
@@ -98,7 +102,15 @@ export default function Home() {
     <div className="bg-white">
       {/* Hero */}
       <section className="mx-auto max-w-5xl px-6 pt-32 pb-28 text-center lg:px-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
+        <Image
+          src="/georgeattire-logo.png"
+          alt="George's Attire logo"
+          width={160}
+          height={160}
+          className="mx-auto h-24 w-24 rounded-full object-cover sm:h-32 sm:w-32"
+          priority
+        />
+        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           Custom Apparel
         </p>
         <h1 className="mt-6 text-5xl font-bold uppercase tracking-[0.15em] text-black sm:text-7xl">
@@ -147,21 +159,14 @@ export default function Home() {
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
             {/* T-Shirt */}
             <div className="rounded-2xl border border-neutral-200 bg-white">
-              <div className="flex h-64 items-center justify-center rounded-t-2xl bg-neutral-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1}
-                  stroke="currentColor"
-                  className="h-20 w-20 text-neutral-300"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5ZM8.25 21h7.5M12 3.75a2.25 2.25 0 0 0-2.25 2.25c0 .414.168.78.44 1.052l1.81 1.81a2.25 2.25 0 0 1 .659 1.591V21h4.5v-2.544c0-.637.236-1.246.659-1.591l1.81-1.81a1.501 1.501 0 0 0 .44-1.052A2.25 2.25 0 0 0 12 3.75Z"
-                  />
-                </svg>
+              <div className="relative h-64 overflow-hidden rounded-t-2xl bg-white">
+                <Image
+                  src={blackShirt}
+                  alt="Black custom t-shirt"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-contain p-6 mix-blend-multiply"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-black">
@@ -180,21 +185,14 @@ export default function Home() {
 
             {/* Sweatshirt */}
             <div className="rounded-2xl border border-neutral-200 bg-white">
-              <div className="flex h-64 items-center justify-center rounded-t-2xl bg-neutral-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1}
-                  stroke="currentColor"
-                  className="h-20 w-20 text-neutral-300"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5ZM8.25 21h7.5M12 3.75a2.25 2.25 0 0 0-2.25 2.25c0 .414.168.78.44 1.052l1.81 1.81a2.25 2.25 0 0 1 .659 1.591V21h4.5v-2.544c0-.637.236-1.246.659-1.591l1.81-1.81a1.501 1.501 0 0 0 .44-1.052A2.25 2.25 0 0 0 12 3.75Z"
-                  />
-                </svg>
+              <div className="relative h-64 overflow-hidden rounded-t-2xl bg-white">
+                <Image
+                  src={blackSweatshirt}
+                  alt="Black custom sweatshirt"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-contain p-6 mix-blend-multiply"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-black">
@@ -213,21 +211,14 @@ export default function Home() {
 
             {/* Hoodie */}
             <div className="rounded-2xl border border-neutral-200 bg-white">
-              <div className="flex h-64 items-center justify-center rounded-t-2xl bg-neutral-100">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1}
-                  stroke="currentColor"
-                  className="h-20 w-20 text-neutral-300"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 9a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5ZM8.25 21h7.5M12 3.75a2.25 2.25 0 0 0-2.25 2.25c0 .414.168.78.44 1.052l1.81 1.81a2.25 2.25 0 0 1 .659 1.591V21h4.5v-2.544c0-.637.236-1.246.659-1.591l1.81-1.81a1.501 1.501 0 0 0 .44-1.052A2.25 2.25 0 0 0 12 3.75Z"
-                  />
-                </svg>
+              <div className="relative h-64 overflow-hidden rounded-t-2xl bg-white">
+                <Image
+                  src={blackHoodie}
+                  alt="Black custom hoodie"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-contain p-6 mix-blend-multiply"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-black">

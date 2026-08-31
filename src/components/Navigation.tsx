@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useCartStore } from "@/lib/store"
 
@@ -44,9 +45,13 @@ export default function Navigation() {
       >
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center">
-            <span className="text-lg font-bold uppercase tracking-[0.2em] text-black sm:text-xl">
-              George&apos;s Attire
-            </span>
+            <Image
+              src="/georgeattire-logo.png"
+              alt="George's Attire logo"
+              width={80}
+              height={80}
+              className="h-10 w-10 rounded-full object-cover sm:h-11 sm:w-11"
+            />
           </Link>
 
           <ul className="hidden items-center gap-1 md:flex">
@@ -171,8 +176,14 @@ export default function Navigation() {
       {mobileOpen && (
         <div className="fixed inset-0 z-50 flex flex-col bg-white md:hidden">
           <div className="flex h-16 items-center justify-between px-4 border-b border-neutral-200">
-            <Link href="/" className="text-lg font-bold uppercase tracking-[0.2em] text-black">
-              George&apos;s Attire
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/georgeattire-logo.png"
+                alt="George's Attire logo"
+                width={80}
+                height={80}
+                className="h-9 w-9 rounded-full object-cover"
+              />
             </Link>
             <button
               onClick={() => setMobileOpen(false)}
