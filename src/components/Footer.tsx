@@ -21,6 +21,8 @@ const supportLinks = [
   { href: "/contact", label: "Shipping & Returns" },
 ];
 
+const REVIEWS_URL = "https://g.page/r/CXtdMKndtrHkEAE/review";
+
 const socials = [
   {
     label: "Instagram",
@@ -136,7 +138,17 @@ export default function Footer() {
           <p className="text-sm text-neutral-500">
             © {year} George&apos;s Attire. All rights reserved.
           </p>
-          <p className="text-sm text-neutral-500">Made in Canada</p>
+          <div className="flex items-center gap-6">
+            <a
+              href={REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-neutral-400 transition-colors duration-150 hover:text-white"
+            >
+              Leave a Review
+            </a>
+            <p className="text-sm text-neutral-500">Made in Canada</p>
+          </div>
         </div>
       </div>
     </footer>

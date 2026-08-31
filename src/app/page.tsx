@@ -1,6 +1,41 @@
 import Link from "next/link";
 import QuoteCalculator from "@/components/QuoteCalculator";
 
+const REVIEWS_URL = "https://g.page/r/CXtdMKndtrHkEAE/review";
+
+const reviews = [
+  {
+    quote:
+      "Incredible experience from start to finish — I'd recommend George's Attire without hesitation.",
+    author: "Theodore Short",
+  },
+  {
+    quote:
+      "Excellent customer service, and my shirt came out looking great.",
+    author: "Miles Wang",
+  },
+  {
+    quote:
+      "My hoodie was warm, looked great, and the quality was excellent.",
+    author: "Amir Ishkaev",
+  },
+  {
+    quote:
+      "Great quality that was absolutely worth the wait — I'd order again in a heartbeat.",
+    author: "Alvin Tan",
+  },
+  {
+    quote:
+      "Very good and friendly customer service, from the first message to delivery.",
+    author: "Avik Joshi",
+  },
+  {
+    quote:
+      "The best clothes ever — quality you can feel the moment you put them on.",
+    author: "Arush Shrivastava",
+  },
+];
+
 const pricingRows = [
   { item: "T-Shirt", price: "$10" },
   { item: "Sweatshirt", price: "$20" },
@@ -383,43 +418,54 @@ export default function Home() {
             <h2 className="mt-3 text-2xl font-bold tracking-tight text-black sm:text-3xl">
               What customers are saying
             </h2>
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href={REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              >
+                Leave a Review
+              </a>
+              <a
+                href={REVIEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-black transition-colors hover:border-black"
+              >
+                See Reviews on Google
+              </a>
+            </div>
           </div>
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            {[
-              {
-                quote:
-                  "Your first review goes right here. Tell the world what you loved about your custom gear.",
-                author: "Your name goes here",
-              },
-              {
-                quote:
-                  "Your first review goes right here. Tell the world what you loved about your custom gear.",
-                author: "Your name goes here",
-              },
-              {
-                quote:
-                  "Your first review goes right here. Tell the world what you loved about your custom gear.",
-                author: "Your name goes here",
-              },
-            ].map((t) => (
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {reviews.map((review) => (
               <figure
-                key={t.author}
-                className="rounded-2xl border border-dashed border-neutral-300 bg-white p-8"
+                key={review.author}
+                className="flex flex-col rounded-2xl border border-neutral-200 bg-white p-8"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="h-8 w-8 text-neutral-200"
-                >
-                  <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
-                </svg>
-                <blockquote className="mt-4 text-sm leading-relaxed text-neutral-600">
-                  {t.quote}
+                <div className="flex items-center gap-1 text-amber-400">
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <svg
+                      key={i}
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="h-4 w-4"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  ))}
+                </div>
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-neutral-600">
+                  &ldquo;{review.quote}&rdquo;
                 </blockquote>
-                <figcaption className="mt-4 text-xs font-medium uppercase tracking-wide text-neutral-400">
-                  — {t.author}
+                <figcaption className="mt-5 text-xs font-medium uppercase tracking-wide text-neutral-400">
+                  — {review.author} · Verified Google review
                 </figcaption>
               </figure>
             ))}
@@ -427,12 +473,14 @@ export default function Home() {
 
           <p className="mt-10 text-center text-sm text-neutral-500">
             Just got your order?{" "}
-            <Link
-              href="/contact"
+            <a
+              href={REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-medium text-black underline underline-offset-2 hover:text-neutral-700"
             >
-              Share your review
-            </Link>{" "}
+              Share your review on Google
+            </a>{" "}
             and you could be featured here.
           </p>
         </div>
