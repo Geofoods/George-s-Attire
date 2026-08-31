@@ -11,6 +11,8 @@ export const metadata = {
     "Browse our collection of premium custom apparel — t-shirts, sweatshirts, and hoodies made just for you.",
 };
 
+export const dynamic = "force-dynamic";
+
 function ProductPlaceholder({ type }: { type: string }) {
   const image =
     type === "TSHIRT"
