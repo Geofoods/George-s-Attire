@@ -151,6 +151,7 @@ export default function CheckoutPage() {
                   <input
                     id="name"
                     type="text"
+                    autoComplete="name"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -165,6 +166,7 @@ export default function CheckoutPage() {
                   <input
                     id="email"
                     type="email"
+                    autoComplete="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -179,6 +181,7 @@ export default function CheckoutPage() {
                   <input
                     id="phone"
                     type="tel"
+                    autoComplete="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="mt-1.5 block w-full rounded-xl border border-neutral-200 bg-neutral-50 px-4 py-2.5 text-sm text-black outline-none transition-colors placeholder:text-neutral-400 focus:border-black focus:bg-white"
@@ -199,6 +202,8 @@ export default function CheckoutPage() {
                 </label>
                 <textarea
                   id="address"
+                  name="address"
+                  autoComplete="street-address"
                   required
                   rows={3}
                   value={address}
