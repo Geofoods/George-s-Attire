@@ -74,7 +74,6 @@ model Product {
   updatedAt   DateTime    @updatedAt
 
   variants       ProductVariant[]
-  orderItems     OrderItem[]
   customizations Customization[]
 
   @@map("products")
@@ -141,8 +140,7 @@ model OrderItem {
   customizations      String
   designUrl           String?
 
-  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  product Product @relation(fields: [productId], references: [id], onDelete: Restrict)
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
   @@index([orderId])
   @@map("order_items")
