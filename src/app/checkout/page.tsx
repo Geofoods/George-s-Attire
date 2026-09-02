@@ -65,6 +65,7 @@ export default function CheckoutPage() {
       size: item.size,
       color: item.color,
       quantity: item.quantity,
+      numberOfExtraPrints: Math.max(0, (item.printLocations?.length ?? 1) - 1),
       basePrice: item.basePrice,
       extraPrintCharge: item.extraPrintCharge,
       xlSurcharge: item.xlSurcharge,

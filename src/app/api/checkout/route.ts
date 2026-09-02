@@ -25,7 +25,6 @@ interface CartItemPayload {
   printLocations: string[];
   designUrl?: string;
   shippingMethod: "STANDARD" | "RUSH";
-  clientTotal: number;
 }
 
 export async function POST(request: NextRequest) {
@@ -96,15 +95,6 @@ export async function POST(request: NextRequest) {
         shippingMethod,
         quantity: item.quantity,
       });
-
-      if (breakdown.total !== item.clientTotal) {
-        return NextResponse.json(
-          {
-            error: `Price mismatch for ${item.productName}. Please refresh and try again.`,
-          },
-          { status: 400 }
-        );
-      }
 
       const basePrice = await calculateBasePrice(item.productType);
       const extraCost = await calculateExtraPrintCost(item.numberOfExtraPrints);
