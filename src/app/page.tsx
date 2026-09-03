@@ -4,6 +4,11 @@ import Image from "next/image";
 import blackShirt from "../../shirts/black.webp";
 import blackSweatshirt from "../../sweatshirts/black.webp";
 import blackHoodie from "../../hoddies/black.jpg";
+import photo1908 from "../../photos/IMG_1908 (1).webp";
+import photoMiles from "../../photos/meandmileseom.webp";
+import photoUnnamed3 from "../../photos/unnamed (3).webp";
+import photoRemoveBg from "../../photos/unnamed__1_-removebg-preview (1) (1).webp";
+import photoTransformed from "../../photos/unnamed_(2)-aRGsShNkV-transformed.png";
 
 const REVIEWS_URL = "https://g.page/r/CXtdMKndtrHkEAE/review";
 
@@ -12,31 +17,42 @@ const reviews = [
     quote:
       "Incredible experience from start to finish — I'd recommend George's Attire without hesitation.",
     author: "Theodore Short",
+    image: photo1908,
+    imageAlt: "Custom printed t-shirt from George's Attire",
   },
   {
     quote:
       "Excellent customer service, and my shirt came out looking great.",
     author: "Miles Wang",
+    image: photoMiles,
+    imageAlt: "Printed shirt from George's Attire",
   },
   {
     quote:
       "My hoodie was warm, looked great, and the quality was excellent.",
     author: "Amir Ishkaev",
+    image: photoUnnamed3,
+    imageAlt: "Custom printed shirt from George's Attire",
   },
   {
     quote:
       "Great quality that was absolutely worth the wait — I'd order again in a heartbeat.",
     author: "Alvin Tan",
+    image: photoRemoveBg,
+    imageAlt: "Printed apparel from George's Attire",
   },
   {
     quote:
       "Very good and friendly customer service, from the first message to delivery.",
     author: "Avik Joshi",
+    image: photoTransformed,
+    imageAlt: "Custom printed shirt from George's Attire",
   },
   {
     quote:
       "The best clothes ever — quality you can feel the moment you put them on.",
     author: "Arush Shrivastava",
+    image: null,
   },
 ];
 
@@ -433,31 +449,44 @@ export default function Home() {
             {reviews.map((review) => (
               <figure
                 key={review.author}
-                className="flex flex-col rounded-2xl border border-neutral-200 bg-white p-8"
+                className="flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white"
               >
-                <div className="flex items-center gap-1 text-amber-400">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <svg
-                      key={i}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="h-4 w-4"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  ))}
+                {review.image && (
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-100">
+                    <Image
+                      src={review.image}
+                      alt={review.imageAlt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-8">
+                  <div className="flex items-center gap-1 text-amber-400">
+                    {[0, 1, 2, 3, 4].map((i) => (
+                      <svg
+                        key={i}
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="h-4 w-4"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    ))}
+                  </div>
+                  <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-neutral-600">
+                    &ldquo;{review.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-5 text-xs font-medium uppercase tracking-wide text-neutral-400">
+                    — {review.author} · Verified Google review
+                  </figcaption>
                 </div>
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-neutral-600">
-                  &ldquo;{review.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-5 text-xs font-medium uppercase tracking-wide text-neutral-400">
-                  — {review.author} · Verified Google review
-                </figcaption>
               </figure>
             ))}
           </div>
