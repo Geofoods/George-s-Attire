@@ -9,6 +9,7 @@ import photoMiles from "../../photos/meandmileseom.webp";
 import photoUnnamed3 from "../../photos/unnamed (3).webp";
 import photoRemoveBg from "../../photos/unnamed__1_-removebg-preview (1) (1).webp";
 import photoTransformed from "../../photos/unnamed_(2)-aRGsShNkV-transformed.png";
+import photo2427 from "../../photos/IMG_2427.jpg";
 
 const REVIEWS_URL = "https://g.page/r/CXtdMKndtrHkEAE/review";
 
@@ -52,7 +53,8 @@ const reviews = [
     quote:
       "The best clothes ever — quality you can feel the moment you put them on.",
     author: "Arush Shrivastava",
-    image: null,
+    image: photo2427,
+    imageAlt: "Custom printed shirt from George's Attire",
   },
 ];
 
