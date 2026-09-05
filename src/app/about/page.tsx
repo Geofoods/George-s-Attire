@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import photoMiles from "../../photos/meandmileseom.webp";
+import photoMiles from "../../../photos/meandmileseom.webp";
 
 export const metadata: Metadata = {
   title: "About | George's Attire",

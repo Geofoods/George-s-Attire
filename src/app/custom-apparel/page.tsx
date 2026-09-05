@@ -836,7 +836,7 @@ function CustomApparelBuilder() {
                     <div
                       className={`relative h-16 w-16 overflow-hidden rounded-xl bg-white transition-all duration-150 ${
                         color === c.hex
-                          ? "ring-2 ring-offset-2 ring-black"
+                          ? "ring-2 ring-offset-2 ring-accent"
                           : "ring-1 ring-offset-1 ring-neutral-300 hover:ring-neutral-400"
                       }`}
                     >
@@ -912,7 +912,7 @@ function CustomApparelBuilder() {
                                 onClick={() => handleTogglePreset(preset)}
                                 className={`flex items-center justify-between rounded-lg border px-3 py-2 text-left transition-all ${
                                   isTargeted && isChecked
-                                    ? "border-black bg-white shadow-md ring-2 ring-black"
+                                    ? "border-black bg-white shadow-md ring-2 ring-accent"
                                     : isChecked
                                     ? "border-black bg-white shadow-sm"
                                     : "border-neutral-200 bg-white hover:border-neutral-300"
