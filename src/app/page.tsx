@@ -419,7 +419,7 @@ export default function Home() {
 
       {/* Reviews */}
       <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-[90rem] px-6 py-24 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Testimonials
