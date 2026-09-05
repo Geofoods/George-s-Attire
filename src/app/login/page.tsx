@@ -110,7 +110,7 @@ function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? (
                 <span className="inline-flex items-center gap-2">
@@ -129,7 +129,7 @@ function LoginForm() {
 
         <p className="mt-6 text-center text-sm text-neutral-500">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="font-medium text-black transition-colors hover:underline">
+          <Link href="/register" className="font-medium text-accent transition-colors hover:underline">
             Sign up
           </Link>
         </p>

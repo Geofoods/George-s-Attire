@@ -155,6 +155,12 @@ export default function Footer() {
               Leave a Review
             </a>
             <p className="text-sm text-neutral-500">Made in Canada</p>
+            <Link
+              href="/terms"
+              className="text-sm text-neutral-400 transition-colors duration-150 hover:text-white"
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>

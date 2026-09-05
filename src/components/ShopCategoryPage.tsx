@@ -1,17 +1,9 @@
 import prisma from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma, ProductType } from "@prisma/client";
 import Image from "next/image";
-import blackShirt from "../../../shirts/black.webp";
-import blackSweatshirt from "../../../sweatshirts/black.webp";
-import blackHoodie from "../../../hoddies/black.jpg";
-
-export const metadata = {
-  title: "Shop | George's Attire",
-  description:
-    "Browse our collection of premium custom apparel — t-shirts, sweatshirts, and hoodies made just for you.",
-};
-
-export const dynamic = "force-dynamic";
+import blackShirt from "../../shirts/black.webp";
+import blackSweatshirt from "../../sweatshirts/black.webp";
+import blackHoodie from "../../hoddies/black.jpg";
 
 function ProductPlaceholder({ type }: { type: string }) {
   const image =
@@ -34,9 +26,21 @@ function ProductPlaceholder({ type }: { type: string }) {
   );
 }
 
-export default async function ShopPage() {
+type ShopCategoryPageProps = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  type: ProductType;
+};
+
+export default async function ShopCategoryPage({
+  eyebrow,
+  title,
+  description,
+  type,
+}: ShopCategoryPageProps) {
   const products = await prisma.product.findMany({
-    where: { isActive: true },
+    where: { isActive: true, type },
     orderBy: { createdAt: "asc" },
   });
 
@@ -45,13 +49,13 @@ export default async function ShopPage() {
       <section className="mx-auto max-w-5xl px-6 pt-24 pb-20 lg:px-8">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
-            Our Collection
+            {eyebrow}
           </p>
           <h1 className="mt-4 text-4xl font-bold tracking-tight text-black sm:text-5xl">
-            Shop
+            {title}
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-neutral-500">
-            Find your perfect custom apparel
+            {description}
           </p>
         </div>
       </section>
@@ -61,7 +65,7 @@ export default async function ShopPage() {
           {products.length === 0 ? (
             <div className="rounded-2xl border border-neutral-200 p-16 text-center">
               <p className="text-sm text-neutral-500">
-                No products available yet. Check back soon.
+                No {title.toLowerCase()} available yet. Check back soon.
               </p>
             </div>
           ) : (
@@ -84,7 +88,7 @@ export default async function ShopPage() {
                     </p>
                     <a
                       href={`/custom-apparel?product=${product.type}`}
-                      className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-accent/90"
+                      className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                     >
                       Customize
                     </a>

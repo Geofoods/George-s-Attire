@@ -162,13 +162,13 @@ export default function QuoteCalculator() {
 
       <Link
         href="/custom-apparel"
-        className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+        className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
       >
         Continue to Order
       </Link>
       <p className="mt-4 text-center text-sm text-neutral-500">
         Need 50+ pieces?{" "}
-        <Link href="/bulk-orders" className="font-medium text-black underline underline-offset-2 hover:text-neutral-700">
+        <Link href="/bulk-orders" className="font-medium text-accent underline underline-offset-2 hover:text-neutral-700">
           Request a bulk quote →
         </Link>
       </p>

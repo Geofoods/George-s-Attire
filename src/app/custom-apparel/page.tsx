@@ -1240,7 +1240,7 @@ function CustomApparelBuilder() {
             <button
               onClick={handleAddToCart}
               disabled={showSuccess}
-              className="w-full rounded-xl bg-black py-4 text-base font-semibold text-white transition-all duration-150 hover:bg-neutral-800 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed shadow-lg"
+              className="w-full rounded-xl bg-accent py-4 text-base font-semibold text-white transition-all duration-150 hover:bg-accent/90 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed shadow-lg"
             >
               {showSuccess ? (
                 <span className="inline-flex items-center gap-2">

@@ -6,9 +6,14 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { useCartStore } from "@/lib/store"
 
+const shopCategories = [
+  { href: "/shop/tshirts", label: "T-Shirts" },
+  { href: "/shop/sweatshirts", label: "Sweatshirts" },
+  { href: "/shop/hoodies", label: "Hoodies" },
+]
+
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
   { href: "/organizations", label: "Organizations" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/about", label: "About" },
@@ -17,6 +22,8 @@ const navLinks = [
 
 export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [shopOpen, setShopOpen] = useState(false)
+  const [mobileShopOpen, setMobileShopOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const itemCount = useCartStore((s) => s.getItemCount())
@@ -29,6 +36,8 @@ export default function Navigation() {
 
   useEffect(() => {
     setMobileOpen(false)
+    setShopOpen(false)
+    setMobileShopOpen(false)
   }, [pathname])
 
   useEffect(() => {
@@ -75,12 +84,75 @@ export default function Navigation() {
                 </li>
               )
             })}
+            <li className="relative">
+              <button
+                onClick={() => setShopOpen((o) => !o)}
+                aria-expanded={shopOpen}
+                aria-haspopup="true"
+                className={`relative flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors duration-150 ${
+                  pathname.startsWith("/shop")
+                    ? "text-black"
+                    : "text-neutral-500 hover:text-black"
+                }`}
+              >
+                Shop
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className={`h-3 w-3 transition-transform duration-150 ${
+                    shopOpen ? "rotate-180" : ""
+                  }`}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+                {pathname.startsWith("/shop") && (
+                  <span className="absolute inset-x-3 -bottom-[1px] h-0.5 bg-black" />
+                )}
+              </button>
+              {shopOpen && (
+                <>
+                  <button
+                    aria-label="Close Shop menu"
+                    onClick={() => setShopOpen(false)}
+                    className="fixed inset-0 z-40 cursor-default"
+                    tabIndex={-1}
+                  />
+                  <div className="absolute left-0 top-full z-50 pt-2">
+                    <div className="w-48 overflow-hidden rounded-xl border border-neutral-200 bg-white py-1 shadow-lg">
+                      {shopCategories.map((cat) => {
+                        const active = pathname === cat.href
+                        return (
+                          <Link
+                            key={cat.href}
+                            href={cat.href}
+                            className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 ${
+                              active
+                                ? "bg-neutral-50 text-black"
+                                : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                            }`}
+                          >
+                            {cat.label}
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
+            </li>
           </ul>
 
           <div className="flex items-center gap-3">
             <Link
               href="/custom-apparel"
-              className="hidden h-10 items-center rounded-full bg-black px-5 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800 lg:inline-flex"
+              className="hidden h-10 items-center rounded-full bg-accent px-5 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800 lg:inline-flex"
             >
               Start an Order
             </Link>
@@ -226,6 +298,55 @@ export default function Navigation() {
                   </li>
                 )
               })}
+              <li>
+                <button
+                  onClick={() => setMobileShopOpen((o) => !o)}
+                  aria-expanded={mobileShopOpen}
+                  className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-base font-medium transition-colors duration-150 ${
+                    pathname.startsWith("/shop")
+                      ? "bg-neutral-100 text-black"
+                      : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                  }`}
+                >
+                  <span>Shop</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className={`h-4 w-4 transition-transform duration-150 ${
+                      mobileShopOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </button>
+                {mobileShopOpen && (
+                  <div className="mt-1 flex flex-col gap-1 pl-4">
+                    {shopCategories.map((cat) => {
+                      const active = pathname === cat.href
+                      return (
+                        <Link
+                          key={cat.href}
+                          href={cat.href}
+                          className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors duration-150 ${
+                            active
+                              ? "bg-neutral-100 text-black"
+                              : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                          }`}
+                        >
+                          {cat.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </li>
             </ul>
 
             <div className="mt-8 border-t border-neutral-200 pt-6">
@@ -255,13 +376,13 @@ export default function Navigation() {
           <div className="border-t border-neutral-200 px-4 py-4">
             <Link
               href="/custom-apparel"
-              className="mb-3 flex w-full items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800"
+              className="mb-3 flex w-full items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800"
             >
               Start an Order
             </Link>
             <Link
               href="/cart"
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

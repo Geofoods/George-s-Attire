@@ -174,7 +174,7 @@ export default function HowItWorksPage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/custom-apparel"
-              className="inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              className="inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
             >
               Start an Order
             </Link>

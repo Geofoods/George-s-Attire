@@ -6,6 +6,7 @@
   --color-muted: #737373;
   --color-border: #e5e5e5;
   --color-card: #fafafa;
+  --color-accent: #0270ff;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -26,7 +27,7 @@ html {
 }
 
 ::selection {
-  background: #0a0a0a;
+  background: #0270ff;
   color: #ffffff;
 }
 
@@ -66,6 +67,6 @@ html {
 }
 
 :focus-visible {
-  outline: 2px solid #0a0a0a;
+  outline: 2px solid #0270ff;
   outline-offset: 2px;
 }

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import photoMiles from "../../photos/meandmileseom.webp";
 
 export const metadata: Metadata = {
   title: "About | George's Attire",
@@ -116,10 +118,14 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="flex h-72 w-full max-w-sm items-center justify-center rounded-2xl border border-neutral-100 bg-neutral-50">
-                <span className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-300">
-                  GA
-                </span>
+              <div className="relative h-72 w-full max-w-sm overflow-hidden rounded-2xl bg-neutral-100">
+                <Image
+                  src={photoMiles}
+                  alt="George's Attire team"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -172,7 +178,7 @@ export default function AboutPage() {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="/shop"
-              className="inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              className="inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
             >
               Shop Now
             </a>

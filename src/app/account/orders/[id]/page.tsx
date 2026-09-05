@@ -221,7 +221,7 @@ export default function OrderDetailPage() {
                             href={item.designUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-black transition-colors hover:underline"
+                            className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:underline"
                           >
                             View uploaded design
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3">

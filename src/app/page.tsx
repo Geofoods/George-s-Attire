@@ -131,10 +131,10 @@ export default function Home() {
         <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           Custom Apparel
         </p>
-        <h1 className="mt-6 text-5xl font-bold uppercase tracking-[0.15em] text-black sm:text-7xl">
+        <h1 className="mt-6 text-6xl font-bold uppercase tracking-[0.12em] text-black sm:text-8xl">
           George&apos;s Attire
         </h1>
-        <p className="mt-6 text-xl font-medium tracking-wide text-black">
+        <p className="mt-6 text-2xl font-medium tracking-wide text-black sm:text-3xl">
           Custom Apparel Made Your Way
         </p>
         <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-neutral-500">
@@ -143,7 +143,7 @@ export default function Home() {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/shop"
-            className="inline-flex h-12 items-center rounded-full bg-black px-8 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            className="inline-flex h-12 items-center rounded-full bg-accent px-8 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
           >
             Shop Apparel
           </Link>
@@ -194,7 +194,7 @@ export default function Home() {
                 <p className="mt-1 text-lg font-bold text-black">$10 CAD</p>
                 <Link
                   href="/custom-apparel?product=TSHIRT"
-                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                 >
                   Customize
                 </Link>
@@ -220,7 +220,7 @@ export default function Home() {
                 <p className="mt-1 text-lg font-bold text-black">$20 CAD</p>
                 <Link
                   href="/custom-apparel?product=SWEATSHIRT"
-                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                 >
                   Customize
                 </Link>
@@ -246,7 +246,7 @@ export default function Home() {
                 <p className="mt-1 text-lg font-bold text-black">$30 CAD</p>
                 <Link
                   href="/custom-apparel?product=HOODIE"
-                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
                 >
                   Customize
                 </Link>
@@ -499,7 +499,7 @@ export default function Home() {
               href={REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-black underline underline-offset-2 hover:text-neutral-700"
+              className="font-medium text-accent underline underline-offset-2 hover:text-neutral-700"
             >
               Share your review on Google
             </a>{" "}

@@ -118,7 +118,7 @@ export default function BulkOrdersPage() {
             </p>
             <Link
               href="/"
-              className="mt-8 inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              className="mt-8 inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
             >
               Back to Home
             </Link>
@@ -200,7 +200,7 @@ export default function BulkOrdersPage() {
             Looking for a single item instead?{" "}
             <Link
               href="/custom-apparel"
-              className="font-medium text-black underline underline-offset-2 hover:text-neutral-700"
+              className="font-medium text-accent underline underline-offset-2 hover:text-neutral-700"
             >
               Build one in the custom apparel studio →
             </Link>
@@ -469,7 +469,7 @@ export default function BulkOrdersPage() {
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-10"
+              className="inline-flex h-12 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-10"
             >
               {status === "submitting"
                 ? "Submitting..."

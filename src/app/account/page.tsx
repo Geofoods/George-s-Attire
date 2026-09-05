@@ -204,7 +204,7 @@ export default function AccountPage() {
                 </p>
                 <Link
                   href="/shop"
-                  className="inline-flex items-center rounded-full bg-black px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  className="inline-flex items-center rounded-full bg-accent px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent/90"
                 >
                   Browse Shop
                 </Link>
@@ -282,7 +282,7 @@ export default function AccountPage() {
                           <div className="mt-4 flex justify-end">
                             <Link
                               href={`/account/orders/${order.id}`}
-                              className="inline-flex items-center gap-1 text-sm font-medium text-black transition-colors hover:underline"
+                              className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:underline"
                             >
                               View full details
                               <svg

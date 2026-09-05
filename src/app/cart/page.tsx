@@ -46,7 +46,7 @@ export default function CartPage() {
           </p>
           <Link
             href="/shop"
-            className="mt-8 inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            className="mt-8 inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
           >
             Start Shopping
           </Link>
@@ -244,7 +244,7 @@ export default function CartPage() {
 
               <button
                 onClick={() => router.push("/checkout")}
-                className="mt-6 flex w-full items-center justify-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                className="mt-6 flex w-full items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent/90"
               >
                 Proceed to Checkout
               </button>
