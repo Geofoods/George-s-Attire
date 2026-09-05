@@ -34,7 +34,7 @@ const sections = [
   },
   {
     title: "7. No Returns or Refunds",
-    body: "All sales are final. We do not offer returns, exchanges, or refunds for any reason, including a change of mind, wrong size selected, or incorrect personalization. Because every garment is custom-made specifically for your order, it cannot be resold or reused. The only exception is an item that arrives defective or damaged — in that case we will replace it at no cost, but we will not issue a refund.",
+    body: "All sales are final. We do not offer returns, exchanges, or refunds for any reason, including a change of mind, wrong size selected, or incorrect personalization. Because every garment is custom-made specifically for your order, it cannot be resold or reused. The only exception is an item that arrives defective or damaged in that case we will replace it at no cost, but we will not issue a refund.",
   },
   {
     title: "8. Intellectual Property",
@@ -65,7 +65,7 @@ export default function TermsPage() {
           Terms of Service
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-500">
-          The fine print behind George&apos;s Attire — read on to understand
+          The fine print behind George&apos;s Attire read on to understand
           what to expect when ordering with us.
         </p>
         <p className="mt-3 text-sm text-neutral-400">
@@ -81,7 +81,7 @@ export default function TermsPage() {
           <p className="mt-2 text-sm leading-relaxed text-red-700">
             All sales are final. Because every item is custom-made to your
             order, we do not accept returns, exchanges, or refunds for any
-            reason — including a simple change of mind. The only exception is
+            reason including a simple change of mind. The only exception is
             a defective or damaged item, which we will replace, never refund.
           </p>
         </div>
@@ -107,7 +107,7 @@ export default function TermsPage() {
               Have a question?
             </h2>
             <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-neutral-500">
-              We&apos;re happy to clarify any of these terms — just reach out
+              We&apos;re happy to clarify any of these terms just reach out
               and we&apos;ll help.
             </p>
             <Link

@@ -16,7 +16,7 @@ const REVIEWS_URL = "https://g.page/r/CXtdMKndtrHkEAE/review";
 const reviews = [
   {
     quote:
-      "Incredible experience from start to finish — I'd recommend George's Attire without hesitation.",
+      "Incredible experience from start to finish I'd recommend George's Attire without hesitation.",
     author: "Theodore Short",
     image: photo1908,
     imageAlt: "Custom printed t-shirt from George's Attire",
@@ -37,7 +37,7 @@ const reviews = [
   },
   {
     quote:
-      "Great quality that was absolutely worth the wait — I'd order again in a heartbeat.",
+      "Great quality that was absolutely worth the wait I'd order again in a heartbeat.",
     author: "Alvin Tan",
     image: photoRemoveBg,
     imageAlt: "Printed apparel from George's Attire",
@@ -51,7 +51,7 @@ const reviews = [
   },
   {
     quote:
-      "The best clothes ever — quality you can feel the moment you put them on.",
+      "The best clothes ever quality you can feel the moment you put them on.",
     author: "Arush Shrivastava",
     image: photo2427,
     imageAlt: "Custom printed shirt from George's Attire",
@@ -293,7 +293,7 @@ export default function Home() {
               </div>
               <p className="mt-4 text-sm leading-relaxed text-neutral-500">
                 First print location is included on every item. Pricing is
-                identical on the custom apparel builder — what you see here is
+                identical on the custom apparel builder what you see here is
                 what you pay.
               </p>
             </div>
@@ -486,7 +486,7 @@ export default function Home() {
                     &ldquo;{review.quote}&rdquo;
                   </blockquote>
                   <figcaption className="mt-5 text-xs font-medium uppercase tracking-wide text-neutral-400">
-                    — {review.author} · Verified Google review
+                    {review.author} · Verified Google review
                   </figcaption>
                 </div>
               </figure>

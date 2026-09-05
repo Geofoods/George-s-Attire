@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "How It Works | George's Attire",
   description:
-    "From choosing your apparel to delivery — see exactly how custom orders work at George's Attire.",
+    "From choosing your apparel to delivery see exactly how custom orders work at George's Attire.",
 };
 
 const steps = [
@@ -30,7 +30,7 @@ const steps = [
     number: "04",
     title: "We Deliver",
     description:
-      "We print, package, and ship your custom apparel right to your door — or check out the production steps below.",
+      "We print, package, and ship your custom apparel right to your door or check out the production steps below.",
   },
 ];
 
@@ -94,7 +94,7 @@ export default function HowItWorksPage() {
           How It Works
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-500">
-          Four easy steps from idea to doorstep — with transparent pricing the
+          Four easy steps from idea to doorstep with transparent pricing the
           whole way.
         </p>
       </section>
@@ -168,7 +168,7 @@ export default function HowItWorksPage() {
             Clear pricing, up front
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-neutral-500">
-            T-Shirts from $10, Sweatshirts from $20, Hoodies from $30 — with a
+            T-Shirts from $10, Sweatshirts from $20, Hoodies from $30 with a
             calculator that shows the exact price before you order.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

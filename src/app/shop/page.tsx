@@ -8,7 +8,7 @@ import blackHoodie from "../../../hoddies/black.jpg";
 export const metadata = {
   title: "Shop | George's Attire",
   description:
-    "Browse our collection of premium custom apparel — t-shirts, sweatshirts, and hoodies made just for you.",
+    "Browse our collection of premium custom apparel t-shirts, sweatshirts, and hoodies made just for you.",
 };
 
 export const dynamic = "force-dynamic";

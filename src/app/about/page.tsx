@@ -5,14 +5,14 @@ import photoMiles from "../../../photos/meandmileseom.webp";
 export const metadata: Metadata = {
   title: "About | George's Attire",
   description:
-    "Learn about George's Attire — custom apparel made your way, right here in Canada.",
+    "Learn about George's Attire custom apparel made your way, right here in Canada.",
 };
 
 const values = [
   {
     title: "Quality",
     description:
-      "Every garment is crafted with premium materials and meticulous attention to detail. We never cut corners — because your brand deserves the best.",
+      "Every garment is crafted with premium materials and meticulous attention to detail. We never cut corners because your brand deserves the best.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@ const values = [
   {
     title: "Customization",
     description:
-      "From single tees to full-team outfits, every order is built around your vision. Choose your colors, designs, and prints — we bring them to life.",
+      "From single tees to full-team outfits, every order is built around your vision. Choose your colors, designs, and prints we bring them to life.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ export default function AboutPage() {
                 <p>
                   Whether you need a single personalized tee or five hundred
                   hoodies for your organization, we handle every order with the
-                  same care and precision. Our process is straightforward — you
+                  same care and precision. Our process is straightforward you
                   bring the vision, we handle the rest.
                 </p>
                 <p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
             Ready to get started?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-neutral-500">
-            Browse our shop or request a custom quote — we&apos;re here to help
+            Browse our shop or request a custom quote we&apos;re here to help
             bring your ideas to life.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

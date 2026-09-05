@@ -61,7 +61,7 @@ export default function QuoteCalculator() {
           <select id="qc-product" value={product} onChange={(e) => setProduct(e.target.value)} className={selectClass}>
             {products.map((p) => (
               <option key={p.value} value={p.value}>
-                {p.label} — from {p.price}
+                {p.label} from {p.price}
               </option>
             ))}
           </select>

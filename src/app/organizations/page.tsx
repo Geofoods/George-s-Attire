@@ -11,7 +11,7 @@ const audiences = [
   {
     title: "School Clubs",
     description:
-      "Graduation teams, student councils, spirit week, and club uniforms — apparel your whole group will be proud to wear.",
+      "Graduation teams, student councils, spirit week, and club uniforms apparel your whole group will be proud to wear.",
   },
   {
     title: "Sports Teams",
@@ -26,7 +26,7 @@ const audiences = [
   {
     title: "Events",
     description:
-      "Merch for conferences, fundraisers, charity runs, and festivals — ordered once, delivered on time.",
+      "Merch for conferences, fundraisers, charity runs, and festivals ordered once, delivered on time.",
   },
   {
     title: "Organizations",
@@ -130,7 +130,7 @@ export default function OrganizationsPage() {
                 Not sure where you fit?
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-300">
-                Talk to us — we&apos;ll help you figure out the right setup.
+                Talk to us we&apos;ll help you figure out the right setup.
               </p>
               <Link
                 href="/contact"
@@ -225,7 +225,7 @@ export default function OrganizationsPage() {
           </div>
           <p className="mx-auto mt-6 max-w-md text-center text-sm text-neutral-500">
             Have a different budget in mind? Bulk orders receive volume
-            pricing — request a quote and we&apos;ll find a way to make it work.
+            pricing request a quote and we&apos;ll find a way to make it work.
           </p>
         </div>
       </section>
