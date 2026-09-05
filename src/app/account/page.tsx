@@ -118,7 +118,7 @@ export default function AccountPage() {
             className={`flex-1 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
               tab === "profile"
                 ? "bg-black text-white shadow-sm"
-                : "text-neutral-600 hover:text-black"
+                : "text-neutral-600 hover:text-accent"
             }`}
           >
             Profile
@@ -128,7 +128,7 @@ export default function AccountPage() {
             className={`flex-1 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
               tab === "orders"
                 ? "bg-black text-white shadow-sm"
-                : "text-neutral-600 hover:text-black"
+                : "text-neutral-600 hover:text-accent"
             }`}
           >
             Orders
@@ -160,7 +160,7 @@ export default function AccountPage() {
               </h2>
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
-                className="rounded-full border border-neutral-300 px-6 py-2.5 text-sm font-medium text-neutral-700 transition-colors hover:border-black hover:text-black"
+                className="rounded-full border border-neutral-300 px-6 py-2.5 text-sm font-medium text-neutral-700 transition-colors hover:border-accent hover:text-accent"
               >
                 Sign Out
               </button>

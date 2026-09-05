@@ -180,7 +180,7 @@ export default function HowItWorksPage() {
             </Link>
             <Link
               href="/bulk-orders"
-              className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-black transition-colors hover:border-black"
+              className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-black transition-colors hover:border-accent"
             >
               Request a Bulk Quote
             </Link>

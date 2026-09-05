@@ -94,7 +94,7 @@ export default function RegisterPage() {
                 autoComplete="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 placeholder="George Attire"
               />
               {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
@@ -111,7 +111,7 @@ export default function RegisterPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 placeholder="you@example.com"
               />
               {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
@@ -128,7 +128,7 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 placeholder="Minimum 8 characters"
               />
               {errors.password && <p className="mt-1 text-xs text-red-600">{errors.password}</p>}
@@ -145,7 +145,7 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 placeholder="Re-enter your password"
               />
               {errors.confirmPassword && <p className="mt-1 text-xs text-red-600">{errors.confirmPassword}</p>}

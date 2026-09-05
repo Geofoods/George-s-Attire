@@ -74,7 +74,7 @@ function CheckoutSuccessContent() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/"
-              className="inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              className="inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
             >
               Back to Home
             </Link>
@@ -203,13 +203,13 @@ function CheckoutSuccessContent() {
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/"
-            className="inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            className="inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
           >
             Back to Home
           </Link>
           <Link
             href="/account"
-            className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-neutral-600 transition-colors hover:border-black hover:text-black"
+            className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-neutral-600 transition-colors hover:border-accent hover:text-accent"
           >
             View My Orders
           </Link>

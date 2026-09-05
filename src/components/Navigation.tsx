@@ -28,17 +28,19 @@ export default function Navigation() {
   const pathname = usePathname()
   const itemCount = useCartStore((s) => s.getItemCount())
 
+  const [prevPathname, setPrevPathname] = useState(pathname)
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname)
+    setMobileOpen(false)
+    setShopOpen(false)
+    setMobileShopOpen(false)
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0)
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
-
-  useEffect(() => {
-    setMobileOpen(false)
-    setShopOpen(false)
-    setMobileShopOpen(false)
-  }, [pathname])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : ""
@@ -73,7 +75,7 @@ export default function Navigation() {
                     className={`relative px-3 py-2 text-sm font-medium transition-colors duration-150 ${
                       active
                         ? "text-black"
-                        : "text-neutral-500 hover:text-black"
+                        : "text-neutral-500 hover:text-accent"
                     }`}
                   >
                     {link.label}
@@ -92,7 +94,7 @@ export default function Navigation() {
                 className={`relative flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors duration-150 ${
                   pathname.startsWith("/shop")
                     ? "text-black"
-                    : "text-neutral-500 hover:text-black"
+                    : "text-neutral-500 hover:text-accent"
                 }`}
               >
                 Shop
@@ -135,7 +137,7 @@ export default function Navigation() {
                             className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 ${
                               active
                                 ? "bg-neutral-50 text-black"
-                                : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                                : "text-neutral-600 hover:bg-neutral-50 hover:text-accent"
                             }`}
                           >
                             {cat.label}
@@ -159,7 +161,7 @@ export default function Navigation() {
 
             <Link
               href="/cart"
-              className="relative flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 hover:text-black"
+              className="relative flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 hover:text-accent"
               aria-label="Cart"
             >
               <svg
@@ -185,7 +187,7 @@ export default function Navigation() {
 
             <Link
               href="/account"
-              className="hidden items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors duration-150 hover:border-black hover:text-black sm:flex"
+              className="hidden items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors duration-150 hover:border-accent hover:text-accent sm:flex"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +208,7 @@ export default function Navigation() {
 
             <button
               onClick={() => setMobileOpen((o) => !o)}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 hover:text-black md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 hover:text-accent md:hidden"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
             >
               {mobileOpen ? (
@@ -290,7 +292,7 @@ export default function Navigation() {
                       className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors duration-150 ${
                         active
                           ? "bg-neutral-100 text-black"
-                          : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                          : "text-neutral-600 hover:bg-neutral-50 hover:text-accent"
                       }`}
                     >
                       {link.label}
@@ -305,7 +307,7 @@ export default function Navigation() {
                   className={`flex w-full items-center justify-between rounded-lg px-4 py-3 text-base font-medium transition-colors duration-150 ${
                     pathname.startsWith("/shop")
                       ? "bg-neutral-100 text-black"
-                      : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                      : "text-neutral-600 hover:bg-neutral-50 hover:text-accent"
                   }`}
                 >
                   <span>Shop</span>
@@ -337,7 +339,7 @@ export default function Navigation() {
                           className={`block rounded-lg px-4 py-3 text-base font-medium transition-colors duration-150 ${
                             active
                               ? "bg-neutral-100 text-black"
-                              : "text-neutral-600 hover:bg-neutral-50 hover:text-black"
+                              : "text-neutral-600 hover:bg-neutral-50 hover:text-accent"
                           }`}
                         >
                           {cat.label}
@@ -352,7 +354,7 @@ export default function Navigation() {
             <div className="mt-8 border-t border-neutral-200 pt-6">
               <Link
                 href="/account"
-                className="flex items-center gap-3 rounded-lg px-4 py-3 text-base font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-50 hover:text-black"
+                className="flex items-center gap-3 rounded-lg px-4 py-3 text-base font-medium text-neutral-600 transition-colors duration-150 hover:bg-neutral-50 hover:text-accent"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

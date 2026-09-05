@@ -117,7 +117,7 @@ export default function CheckoutPage() {
       <div className="animate-fade-in">
         <Link
           href="/cart"
-          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-neutral-500 transition-colors hover:text-black"
+          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-neutral-500 transition-colors hover:text-accent"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -235,7 +235,7 @@ export default function CheckoutPage() {
                       value="STANDARD"
                       checked={shippingMethod === "STANDARD"}
                       onChange={() => setShippingMethod("STANDARD")}
-                      className="h-4 w-4 border-neutral-300 text-black accent-black"
+                      className="h-4 w-4 border-neutral-300 text-black accent-accent"
                     />
                     <div>
                       <p className="text-sm font-medium text-black">Standard Shipping</p>
@@ -259,7 +259,7 @@ export default function CheckoutPage() {
                       value="RUSH"
                       checked={shippingMethod === "RUSH"}
                       onChange={() => setShippingMethod("RUSH")}
-                      className="h-4 w-4 border-neutral-300 text-black accent-black"
+                      className="h-4 w-4 border-neutral-300 text-black accent-accent"
                     />
                     <div>
                       <p className="text-sm font-medium text-black">Rush Delivery</p>

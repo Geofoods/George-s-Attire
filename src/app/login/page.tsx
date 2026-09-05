@@ -78,7 +78,7 @@ function LoginForm() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 placeholder="you@example.com"
               />
             </div>
@@ -90,7 +90,7 @@ function LoginForm() {
                 </label>
                 <button
                   type="button"
-                  className="text-xs font-medium text-neutral-500 transition-colors hover:text-black"
+                  className="text-xs font-medium text-neutral-500 transition-colors hover:text-accent"
                 >
                   Forgot password?
                 </button>
@@ -102,7 +102,7 @@ function LoginForm() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+                className="w-full rounded-lg border border-neutral-300 bg-white px-4 py-2.5 text-sm text-black placeholder-neutral-400 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
                 placeholder="Enter your password"
               />
             </div>

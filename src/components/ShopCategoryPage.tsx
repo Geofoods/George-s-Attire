@@ -70,7 +70,7 @@ export default async function ShopCategoryPage({
             </div>
           ) : (
             <div className="grid gap-8 sm:grid-cols-3">
-              {products.map((product: Prisma.ProductGetPayload<{}>) => (
+              {products.map((product: Prisma.ProductGetPayload<object>) => (
                 <div
                   key={product.id}
                   className="rounded-2xl border border-neutral-200 bg-white"

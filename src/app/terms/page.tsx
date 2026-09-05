@@ -33,8 +33,8 @@ const sections = [
     body: "Production and shipping times are estimates and not guaranteed. We are not responsible for delays caused by carriers, customs, or events outside our control. Risk of loss passes to you upon delivery to the carrier. Please review our Shipping & Returns policy for full details on delivery times and lost packages.",
   },
   {
-    title: "7. Returns & Exchange",
-    body: "Due to the custom nature of our products, all sales are final unless an item arrives defective or damaged. If your order arrives damaged, please contact us within 7 days of delivery with photos of the damage. We will review and replace or resolve the issue at our discretion.",
+    title: "7. No Returns or Refunds",
+    body: "All sales are final. We do not offer returns, exchanges, or refunds for any reason, including a change of mind, wrong size selected, or incorrect personalization. Because every garment is custom-made specifically for your order, it cannot be resold or reused. The only exception is an item that arrives defective or damaged — in that case we will replace it at no cost, but we will not issue a refund.",
   },
   {
     title: "8. Intellectual Property",
@@ -71,6 +71,20 @@ export default function TermsPage() {
         <p className="mt-3 text-sm text-neutral-400">
           Effective date: January 1, 2026
         </p>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 lg:px-8">
+        <div className="rounded-2xl border-2 border-red-200 bg-red-50 px-6 py-5 text-center sm:px-8">
+          <h2 className="text-base font-bold text-red-800">
+            No Returns or Exchanges
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-red-700">
+            All sales are final. Because every item is custom-made to your
+            order, we do not accept returns, exchanges, or refunds for any
+            reason — including a simple change of mind. The only exception is
+            a defective or damaged item, which we will replace, never refund.
+          </p>
+        </div>
       </section>
 
       <section className="border-t border-neutral-100">

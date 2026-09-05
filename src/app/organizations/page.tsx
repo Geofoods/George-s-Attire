@@ -89,13 +89,13 @@ export default function OrganizationsPage() {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             href="/bulk-orders"
-            className="inline-flex h-12 items-center rounded-full bg-black px-8 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            className="inline-flex h-12 items-center rounded-full bg-accent px-8 text-sm font-medium text-white transition-colors hover:bg-accent/90"
           >
             Request a Bulk Quote
           </Link>
           <Link
             href="/custom-apparel"
-            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-black"
+            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-accent"
           >
             Build a Single Item
           </Link>
@@ -180,7 +180,7 @@ export default function OrganizationsPage() {
             </p>
             <Link
               href="/bulk-orders"
-              className="mt-6 inline-flex h-12 items-center rounded-full bg-black px-8 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+              className="mt-6 inline-flex h-12 items-center rounded-full bg-accent px-8 text-sm font-medium text-white transition-colors hover:bg-accent/90"
             >
               Request a Bulk Quote
             </Link>

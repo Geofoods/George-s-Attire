@@ -149,13 +149,13 @@ export default function Home() {
           </Link>
           <Link
             href="/custom-apparel"
-            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-black"
+            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-accent"
           >
             Create Custom Apparel
           </Link>
           <Link
             href="/organizations"
-            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-black"
+            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-accent"
           >
             For Organizations
           </Link>
@@ -432,7 +432,7 @@ export default function Home() {
                 href={REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center rounded-full bg-black px-7 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                className="inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
               >
                 Leave a Review
               </a>
@@ -440,7 +440,7 @@ export default function Home() {
                 href={REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-black transition-colors hover:border-black"
+                className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-black transition-colors hover:border-accent"
               >
                 See Reviews on Google
               </a>
@@ -520,7 +520,7 @@ export default function Home() {
           </p>
           <Link
             href="/custom-apparel"
-            className="mt-8 inline-flex h-12 items-center rounded-full bg-black px-8 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            className="mt-8 inline-flex h-12 items-center rounded-full bg-accent px-8 text-sm font-medium text-white transition-colors hover:bg-accent/90"
           >
             Start Designing
           </Link>

@@ -86,7 +86,7 @@ export default function ContactPage() {
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="mt-8 inline-flex h-10 items-center rounded-full border border-neutral-200 px-6 text-sm font-medium text-black transition-colors hover:border-black"
+                  className="mt-8 inline-flex h-10 items-center rounded-full border border-neutral-200 px-6 text-sm font-medium text-black transition-colors hover:border-accent"
                 >
                   Send Another Message
                 </button>
@@ -176,7 +176,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="mt-8 inline-flex h-11 w-full items-center justify-center rounded-full bg-black text-sm font-medium text-white transition-colors hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-8"
+                  className="mt-8 inline-flex h-11 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-8"
                 >
                   {status === "submitting" ? "Sending..." : "Send Message"}
                 </button>
@@ -193,7 +193,7 @@ export default function ContactPage() {
                 </h3>
                 <a
                   href="mailto:georgesunreal@gmail.com"
-                  className="mt-2 block text-sm text-neutral-500 transition-colors hover:text-black"
+                  className="mt-2 block text-sm text-neutral-500 transition-colors hover:text-accent"
                 >
                   georgesunreal@gmail.com
                 </a>
@@ -205,7 +205,7 @@ export default function ContactPage() {
                 </h3>
                 <a
                   href="tel:+16136195185"
-                  className="mt-2 block text-sm text-neutral-500 transition-colors hover:text-black"
+                  className="mt-2 block text-sm text-neutral-500 transition-colors hover:text-accent"
                 >
                   613 619 5185
                 </a>
@@ -218,7 +218,7 @@ export default function ContactPage() {
                 <div className="mt-3 flex gap-4">
                   <a
                     href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:border-black hover:text-black"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:border-accent hover:text-accent"
                     aria-label="Instagram"
                   >
                     <svg
@@ -231,7 +231,7 @@ export default function ContactPage() {
                   </a>
                   <a
                     href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:border-black hover:text-black"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:border-accent hover:text-accent"
                     aria-label="Facebook"
                   >
                     <svg
@@ -244,7 +244,7 @@ export default function ContactPage() {
                   </a>
                   <a
                     href="#"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:border-black hover:text-black"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-500 transition-colors hover:border-accent hover:text-accent"
                     aria-label="TikTok"
                   >
                     <svg
@@ -268,7 +268,7 @@ export default function ContactPage() {
                 </p>
                 <a
                   href="/bulk-orders"
-                  className="mt-4 inline-flex h-9 items-center rounded-full border border-neutral-200 px-5 text-xs font-medium text-black transition-colors hover:border-black"
+                  className="mt-4 inline-flex h-9 items-center rounded-full border border-neutral-200 px-5 text-xs font-medium text-black transition-colors hover:border-accent"
                 >
                   Request a Quote
                 </a>

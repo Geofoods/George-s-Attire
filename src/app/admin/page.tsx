@@ -243,7 +243,7 @@ function OrdersTab() {
             setSearch(e.target.value);
             setPage(1);
           }}
-          className="rounded-lg border border-neutral-200 px-3 py-2 text-sm outline-none focus:border-black focus:ring-1 focus:ring-black"
+          className="rounded-lg border border-neutral-200 px-3 py-2 text-sm outline-none focus:border-accent focus:ring-1 focus:ring-accent"
         />
         <select
           value={statusFilter}
@@ -511,7 +511,7 @@ function PricingTab() {
               type="number"
               value={config.value}
               onChange={(e) => updateValue(config.key, e.target.value)}
-              className="w-32 rounded-lg border border-neutral-200 px-3 py-2 text-sm outline-none focus:border-black focus:ring-1 focus:ring-black"
+              className="w-32 rounded-lg border border-neutral-200 px-3 py-2 text-sm outline-none focus:border-accent focus:ring-1 focus:ring-accent"
             />
             {config.description && (
               <span className="text-xs text-neutral-400">{config.description}</span>

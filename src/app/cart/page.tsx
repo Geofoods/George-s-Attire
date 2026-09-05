@@ -251,7 +251,7 @@ export default function CartPage() {
 
               <Link
                 href="/shop"
-                className="mt-3 flex w-full items-center justify-center rounded-full border border-neutral-200 px-6 py-3 text-sm font-medium text-neutral-600 transition-colors hover:border-black hover:text-black"
+                className="mt-3 flex w-full items-center justify-center rounded-full border border-neutral-200 px-6 py-3 text-sm font-medium text-neutral-600 transition-colors hover:border-accent hover:text-accent"
               >
                 Continue Shopping
               </Link>

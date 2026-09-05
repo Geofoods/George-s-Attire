@@ -615,7 +615,7 @@ function CustomApparelBuilder() {
                           className={`relative rounded-lg py-1.5 text-xs font-semibold transition-all ${
                             isActive
                               ? "bg-white text-black shadow-sm"
-                              : "text-neutral-500 hover:text-black"
+                              : "text-neutral-500 hover:text-accent"
                           }`}
                         >
                           {tab.label}
@@ -713,7 +713,7 @@ function CustomApparelBuilder() {
                           parseFloat(e.target.value)
                         )
                       }
-                      className="w-full accent-black cursor-pointer"
+                      className="w-full accent-accent cursor-pointer"
                     />
                   </div>
                 )}
@@ -737,7 +737,7 @@ function CustomApparelBuilder() {
                           }}
                           className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium transition-all ${
                             isTargeted
-                              ? "bg-black text-white ring-2 ring-offset-1 ring-black"
+                              ? "bg-black text-white ring-2 ring-offset-1 ring-accent"
                               : "bg-neutral-200 text-neutral-800 hover:bg-neutral-300"
                           }`}
                         >
@@ -1041,7 +1041,7 @@ function CustomApparelBuilder() {
                   </div>
                   <button
                     onClick={() => removeDesignForLocation(currentActiveTargetId)}
-                    className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-400 hover:bg-neutral-200 hover:text-black transition-colors"
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-400 hover:bg-neutral-200 hover:text-accent transition-colors"
                     aria-label="Remove design"
                   >
                     <svg

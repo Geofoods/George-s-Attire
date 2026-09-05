@@ -113,7 +113,7 @@ export default function QuoteCalculator() {
           type="checkbox"
           checked={rush}
           onChange={(e) => setRush(e.target.checked)}
-          className="h-4 w-4 rounded border-neutral-300 text-black focus:ring-black"
+          className="h-4 w-4 rounded border-neutral-300 text-accent focus:ring-accent"
         />
         <span className="text-sm font-medium text-black">
           Rush shipping <span className="text-neutral-500">(+$5)</span>
