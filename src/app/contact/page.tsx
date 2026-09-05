@@ -42,7 +42,7 @@ export default function ContactPage() {
 
   return (
     <div className="bg-white">
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-20 lg:px-8">
+      <section className="mx-auto max-w-7xl px-6 pt-24 pb-20 lg:px-8">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
             Get in Touch

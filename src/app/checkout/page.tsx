@@ -113,7 +113,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <div className="animate-fade-in">
         <Link
           href="/cart"

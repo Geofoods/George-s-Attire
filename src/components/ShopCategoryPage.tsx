@@ -46,7 +46,7 @@ export default async function ShopCategoryPage({
 
   return (
     <div className="bg-white">
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-20 lg:px-8">
+      <section className="mx-auto max-w-7xl px-6 pt-24 pb-20 lg:px-8">
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
             {eyebrow}
@@ -61,7 +61,7 @@ export default async function ShopCategoryPage({
       </section>
 
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           {products.length === 0 ? (
             <div className="rounded-2xl border border-neutral-200 p-16 text-center">
               <p className="text-sm text-neutral-500">
@@ -69,7 +69,7 @@ export default async function ShopCategoryPage({
               </p>
             </div>
           ) : (
-            <div className="grid gap-8 sm:grid-cols-3">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {products.map((product: Prisma.ProductGetPayload<object>) => (
                 <div
                   key={product.id}

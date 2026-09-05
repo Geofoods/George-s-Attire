@@ -74,7 +74,7 @@ export default function OrganizationsPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-16 text-center lg:px-8">
+      <section className="mx-auto max-w-7xl px-6 pt-24 pb-16 text-center lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           For Organizations
         </p>
@@ -104,7 +104,7 @@ export default function OrganizationsPage() {
 
       {/* Audiences */}
       <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Who We Serve
@@ -145,7 +145,7 @@ export default function OrganizationsPage() {
 
       {/* Bulk Info */}
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-5xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               No Surprises
@@ -190,7 +190,7 @@ export default function OrganizationsPage() {
 
       {/* Transparent pricing */}
       <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Transparent Pricing

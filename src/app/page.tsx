@@ -119,7 +119,7 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 pt-32 pb-28 text-center lg:px-8">
+      <section className="mx-auto max-w-7xl px-6 pt-32 pb-28 text-center lg:px-8">
         <Image
           src="/georgeattire-logo.png"
           alt="George's Attire logo"
@@ -164,7 +164,7 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Featured
@@ -258,7 +258,7 @@ export default function Home() {
 
       {/* Pricing + Quote Calculator */}
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Transparent Pricing
@@ -304,7 +304,7 @@ export default function Home() {
 
       {/* How It Works */}
       <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Simple Process
@@ -314,7 +314,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="mt-14 grid gap-10 sm:grid-cols-3">
+          <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             <div className="text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-neutral-200 text-lg font-bold text-black">
                 1
@@ -359,7 +359,7 @@ export default function Home() {
 
       {/* Production Process */}
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               From Your Design to Your Shirt
@@ -397,7 +397,7 @@ export default function Home() {
 
       {/* Organizations Banner */}
       <section className="border-t border-neutral-100 bg-black">
-        <div className="mx-auto max-w-5xl px-6 py-20 text-center lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-20 text-center lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
             Teams, Clubs & Businesses
           </p>
@@ -419,7 +419,7 @@ export default function Home() {
 
       {/* Reviews */}
       <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-6 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               Testimonials
@@ -447,7 +447,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
             {reviews.map((review) => (
               <figure
                 key={review.author}
@@ -510,7 +510,7 @@ export default function Home() {
 
       {/* CTA Banner */}
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-5xl px-6 py-24 text-center lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-24 text-center lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
             Ready to create something?
           </h2>

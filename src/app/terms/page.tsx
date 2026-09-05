@@ -57,7 +57,7 @@ const sections = [
 export default function TermsPage() {
   return (
     <div className="bg-white">
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-16 text-center lg:px-8">
+      <section className="mx-auto max-w-7xl px-6 pt-24 pb-16 text-center lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           Legalese, Explained
         </p>

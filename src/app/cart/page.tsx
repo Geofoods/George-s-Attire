@@ -66,7 +66,7 @@ export default function CartPage() {
   const total = subtotal + shippingCost + rushSurcharge + tax
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <div className="animate-fade-in">
         <h1 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
           Shopping Cart

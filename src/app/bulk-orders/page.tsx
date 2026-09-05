@@ -131,7 +131,7 @@ export default function BulkOrdersPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 pt-24 pb-12 text-center lg:px-8">
+      <section className="mx-auto max-w-7xl px-6 pt-24 pb-12 text-center lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           Bulk Orders
         </p>
@@ -146,7 +146,7 @@ export default function BulkOrdersPage() {
 
       {/* Process Steps */}
       <section className="border-y border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-5xl px-6 py-10 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
           <div className="grid gap-6 text-center sm:grid-cols-4">
             {[
               { step: "1", label: "Submit your request" },
@@ -171,7 +171,7 @@ export default function BulkOrdersPage() {
       </section>
 
       {/* Form */}
-      <section className="mx-auto max-w-5xl px-6 py-16 lg:px-8">
+      <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <form
           onSubmit={handleSubmit}
           className="mx-auto max-w-3xl space-y-10"
