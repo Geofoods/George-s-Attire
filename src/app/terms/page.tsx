@@ -88,7 +88,7 @@ export default function TermsPage() {
       </section>
 
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-3xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-3xl px-6 py-16 lg:px-8">
           <div className="space-y-10">
             {sections.map((section) => (
               <div key={section.title}>

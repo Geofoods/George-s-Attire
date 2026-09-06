@@ -68,7 +68,7 @@ function CheckoutSuccessContent() {
 
   if (error || !order) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
+      <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
         <div className="rounded-2xl border border-neutral-200 bg-white p-12 shadow-sm">
           <p className="text-sm text-red-600">{error || "Order not found"}</p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

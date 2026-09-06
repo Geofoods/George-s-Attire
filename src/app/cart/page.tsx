@@ -22,7 +22,7 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
+      <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
         <div className="rounded-2xl border border-neutral-200 bg-white p-12 shadow-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"

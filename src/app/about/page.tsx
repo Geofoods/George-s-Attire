@@ -92,7 +92,7 @@ export default function AboutPage() {
 
       {/* Story */}
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
@@ -134,7 +134,7 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
               What We Stand For
@@ -167,7 +167,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="border-t border-neutral-100">
-        <div className="mx-auto max-w-7xl px-6 py-20 text-center lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
             Ready to get started?
           </h2>
