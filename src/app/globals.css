@@ -83,21 +83,6 @@ html {
   animation: slide-in 0.3s ease-out forwards;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
 :focus-visible {
   outline: 2px solid #0270ff;
   outline-offset: 2px;
