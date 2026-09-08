@@ -18,6 +18,7 @@ George's Attire is my own small business that makes custom apparel for individua
 - Bulk order quote requests for orders of 10 or more pieces
 - Admin dashboard for orders, pricing, and bulk quotes
 - Contact form
+- Custom Domain (georgesattire.works)
 
 ## Pages
 
@@ -36,11 +37,3 @@ George's Attire is my own small business that makes custom apparel for individua
 | `/account` | Signed-in customer order history |
 | `/admin` | Admin order, pricing, and quote management |
 | `/contact` | Contact form |
-
-
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
