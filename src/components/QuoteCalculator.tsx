@@ -162,7 +162,7 @@ export default function QuoteCalculator() {
 
       <Link
         href="/custom-apparel"
-        className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+        className="button-primary mt-6 h-12 w-full"
       >
         Continue to Order
       </Link>
