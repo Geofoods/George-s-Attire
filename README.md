@@ -5,12 +5,12 @@
 <img width="1916" height="829" alt="Screenshot 2026-09-04 220214" src="https://github.com/user-attachments/assets/ee2d71ea-7d7b-4612-9d4f-c9a1d6878b7f" />
 
 
-George's Attire is my own small business that makes custom apparel for individuals, teams, businesses, and organizations in Canada. You can choose a garment, upload artwork, configure print locations, add items to a cart, and pay with Stripe integration. The site also supports account-based order tracking and bulk quote requests with it using Supabase as the back-end.
+George's Attire is my own small business that makes custom apparel for individuals, teams, small businesses, and local organizations near me. You can choose an apparel type, upload artwork, configure print locations, add items to a cart, and pay via Stripe integration. The site also includes an account system and bulk quote requests, using Supabase as the back end.
 
 ## Features
 
 - Custom t-shirt, sweatshirt, and hoodie configuration
-- Artwork uploads in PNG, JPG/JPEG, and SVG formats up to 10 MB
+- Upload artwork or photos up to 10MB
 - Front, back, and sleeve print placement options
 - Standard and rush shipping options
 - Stripe Checkout payment
@@ -24,16 +24,16 @@ George's Attire is my own small business that makes custom apparel for individua
 
 | Page | Description |
 | --- | --- |
-| `/` | Storefront homepage and pricing overview |
-| `/shop` | All active apparel |
-| `/shop/tshirts` | T-shirt catalog |
-| `/shop/sweatshirts` | Sweatshirt catalog |
-| `/shop/hoodies` | Hoodie catalog |
+| `/` | Homepage |
+| `/shop` | Apparel to buy |
+| `/shop/tshirts` | T-shirts |
+| `/shop/sweatshirts` | Sweatshirts |
+| `/shop/hoodies` | Hoodies |
 | `/custom-apparel` | Customization |
 | `/cart` | Review items |
 | `/checkout` | Details and payment |
 | `/bulk-orders` | Bulk quote request form |
 | `/organizations` | Information for teams and organizations |
-| `/account` | Signed-in customer order history |
+| `/account` | Customer order history |
 | `/admin` | Admin order, pricing, and quote management |
 | `/contact` | Contact form |
