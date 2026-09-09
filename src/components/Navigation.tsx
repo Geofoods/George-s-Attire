@@ -50,9 +50,9 @@ export default function Navigation() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full bg-white transition-shadow duration-200 ${
+        className={`sticky top-0 z-50 w-full bg-[#f7f4ed]/95 backdrop-blur transition-shadow duration-200 ${
           scrolled ? "shadow-sm" : ""
-        } border-b border-neutral-200`}
+        } border-b-2 border-[#151515]`}
       >
         <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center">
@@ -154,7 +154,7 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <Link
               href="/custom-apparel"
-              className="hidden h-10 items-center rounded-full bg-accent px-5 text-sm font-medium text-white transition-colors duration-150 hover:bg-neutral-800 lg:inline-flex"
+              className="hidden h-10 items-center border-2 border-[#151515] bg-[#d9f24a] px-5 text-sm font-bold text-[#151515] transition-transform duration-150 hover:-translate-y-0.5 lg:inline-flex"
             >
               Start an Order
             </Link>

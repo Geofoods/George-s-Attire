@@ -117,48 +117,51 @@ const processSteps = [
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <div className="overflow-hidden">
       {/* Hero */}
-      <section className="mx-auto max-w-7xl px-6 pt-28 pb-20 text-center lg:px-8">
-        <Image
-          src="/georgeattire-logo.png"
-          alt="George's Attire logo"
-          width={160}
-          height={160}
-          className="mx-auto h-24 w-24 rounded-full object-cover sm:h-32 sm:w-32"
-          priority
-        />
-        <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
-          Custom Apparel
-        </p>
-        <h1 className="mt-6 text-6xl font-bold uppercase tracking-[0.12em] text-black sm:text-8xl">
-          George&apos;s Attire
-        </h1>
-        <p className="mt-6 text-2xl font-medium tracking-wide text-black sm:text-3xl">
-          Custom Apparel Made Your Way
-        </p>
-        <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-neutral-500">
-          Premium quality custom clothing, designed and created just for you.
-        </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <section className="relative mx-auto max-w-7xl px-6 pb-24 pt-16 lg:px-8 lg:pt-24">
+        <div className="absolute -right-20 top-12 hidden h-52 w-52 rotate-12 rounded-[38%] bg-[#d9f24a] lg:block" />
+        <div className="relative grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <div className="mb-8 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-[#2455d6]">
+              <span className="h-2 w-2 rounded-full bg-[#2455d6]" />
+              Toronto / Canada / Est. now
+            </div>
+            <h1 className="display-type max-w-4xl text-6xl leading-[0.88] text-[#151515] sm:text-8xl lg:text-[8.5rem]">
+              Wear your
+              <span className="block text-[#2455d6]">weird.</span>
+            </h1>
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#6f6b62] sm:text-xl">
+              Custom apparel for the ideas that do not belong in a template.
+              Designed by you, made with care, and shipped across Canada.
+            </p>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Link
             href="/shop"
-            className="inline-flex h-12 items-center rounded-full bg-accent px-8 text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+            className="inline-flex h-14 items-center justify-center border-2 border-[#151515] bg-[#2455d6] px-8 text-sm font-bold text-white shadow-[4px_4px_0_#151515] transition-transform hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_#151515]"
           >
-            Shop Apparel
+            Find your fit <span className="ml-3 text-lg">↗</span>
           </Link>
           <Link
             href="/custom-apparel"
-            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-accent"
+            className="inline-flex h-14 items-center justify-center border-2 border-[#151515] bg-[#fffdf8] px-8 text-sm font-bold text-[#151515] transition-colors hover:bg-[#d9f24a]"
           >
-            Create Custom Apparel
+            Make something yours <span className="ml-3 text-lg">✦</span>
           </Link>
-          <Link
-            href="/organizations"
-            className="inline-flex h-12 items-center rounded-full border border-neutral-200 px-8 text-sm font-medium text-black transition-colors hover:border-accent"
-          >
-            For Organizations
-          </Link>
+        </div>
+          </div>
+          <div className="relative mx-auto w-full max-w-sm rotate-2 border-2 border-[#151515] bg-[#fffdf8] p-4 shadow-[8px_8px_0_#2455d6] lg:mb-2">
+            <div className="relative aspect-[4/5] overflow-hidden bg-[#151515]">
+              <Image src={photoMiles} alt="George's Attire custom apparel" fill sizes="(max-width: 1024px) 80vw, 30vw" className="object-cover" priority />
+              <div className="absolute inset-x-4 bottom-4 bg-[#d9f24a] px-4 py-3 text-xs font-bold uppercase tracking-[0.16em] text-[#151515]">
+                Made for main characters
+              </div>
+            </div>
+            <p className="display-type mt-4 text-2xl">No boring basics.</p>
+          </div>
+        </div>
+        <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-3 border-t-2 border-[#151515] pt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#6f6b62]">
+          <span>Small batch energy</span><span>✦</span><span>Premium blanks</span><span>✦</span><span>Printed in Canada</span>
         </div>
       </section>
 
