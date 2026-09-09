@@ -71,7 +71,6 @@ const COLOR_OPTIONS: ColorOption[] = [
 ]
 
 const PLACEMENT_PRESETS: PlacementPreset[] = [
-  // FRONT
   {
     id: "front-center",
     label: "Center Chest",
@@ -112,7 +111,6 @@ const PLACEMENT_PRESETS: PlacementPreset[] = [
     baseWidthPercent: 36,
     baseHeightPercent: 26,
   },
-  // BACK
   {
     id: "back-center",
     label: "Full Center Back",
@@ -143,7 +141,6 @@ const PLACEMENT_PRESETS: PlacementPreset[] = [
     baseWidthPercent: 36,
     baseHeightPercent: 25,
   },
-  // FRONT LEFT SLEEVE
   {
     id: "front-left-sleeve",
     label: "Left Sleeve",
@@ -154,7 +151,6 @@ const PLACEMENT_PRESETS: PlacementPreset[] = [
     baseWidthPercent: 17,
     baseHeightPercent: 15,
   },
-  // FRONT RIGHT SLEEVE
   {
     id: "front-right-sleeve",
     label: "Right Sleeve",
@@ -165,7 +161,6 @@ const PLACEMENT_PRESETS: PlacementPreset[] = [
     baseWidthPercent: 17,
     baseHeightPercent: 15,
   },
-  // BACK LEFT SLEEVE
   {
     id: "back-left-sleeve",
     label: "Left Sleeve",
@@ -176,7 +171,6 @@ const PLACEMENT_PRESETS: PlacementPreset[] = [
     baseWidthPercent: 17,
     baseHeightPercent: 15,
   },
-  // BACK RIGHT SLEEVE
   {
     id: "back-right-sleeve",
     label: "Right Sleeve",
@@ -357,15 +351,12 @@ function CustomApparelBuilder() {
   const [color, setColor] = useState("#000000")
   const [activeView, setActiveView] = useState<GarmentView>("FRONT")
   
-  // Array of chosen location preset IDs
   const [selectedPlacementIds, setSelectedPlacementIds] = useState<string[]>([
     "front-center",
   ])
 
-  // Active location preset targeted for uploading / editing
   const [activeTargetId, setActiveTargetId] = useState<string>("front-center")
 
-  // Per-location image data map (presetId -> { file, preview, scale })
   const [designsByLocation, setDesignsByLocation] = useState<
     Record<string, LocationDesign>
   >({})
@@ -374,7 +365,6 @@ function CustomApparelBuilder() {
   const [showSuccess, setShowSuccess] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
 
-  // Ensure activeTargetId is valid within selectedPlacementIds
   const currentActiveTargetId = useMemo(() => {
     if (selectedPlacementIds.includes(activeTargetId)) {
       return activeTargetId
@@ -386,14 +376,12 @@ function CustomApparelBuilder() {
     return PLACEMENT_PRESETS.find((p) => p.id === currentActiveTargetId)
   }, [currentActiveTargetId])
 
-  // All presets belonging to current activeView that are currently selected
   const presetsInActiveView = useMemo(() => {
     return PLACEMENT_PRESETS.filter(
       (p) => p.view === activeView && selectedPlacementIds.includes(p.id)
     )
   }, [activeView, selectedPlacementIds])
 
-  // Readable labels for selected placements
   const selectedPlacementLabels = useMemo(() => {
     return selectedPlacementIds.map((id) => {
       const preset = PLACEMENT_PRESETS.find((p) => p.id === id)
@@ -495,7 +483,6 @@ function CustomApparelBuilder() {
   const handleAddToCart = useCallback(() => {
     const productName = APPAREL_OPTIONS.find((o) => o.type === apparelType)!.label
 
-    // Build per-location design payload
     const locationDesigns = selectedPlacementIds.map((id) => {
       const preset = PLACEMENT_PRESETS.find((p) => p.id === id)
       const label = preset ? `${preset.category} (${preset.label})` : id
@@ -507,7 +494,6 @@ function CustomApparelBuilder() {
       }
     })
 
-    // Find primary design for fallback compatibility
     const firstDesignWithPreview = Object.values(designsByLocation).find(
       (d) => d.preview
     )
@@ -575,12 +561,10 @@ function CustomApparelBuilder() {
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
-          {/* Left Column - Live Preview with Garment View Angle Tabs */}
           <div className="lg:col-span-2">
             <div className="sticky top-24">
               <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
                 
-                {/* View Switcher Header Tabs */}
                 <div className="mb-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
@@ -628,7 +612,6 @@ function CustomApparelBuilder() {
                   </div>
                 </div>
 
-                {/* Live Preview Canvas */}
                 <div className="relative flex aspect-[3/4] items-center justify-center rounded-xl bg-white overflow-hidden border border-neutral-200">
                   <div className="relative w-3/4 h-3/4 flex items-center justify-center">
                     {garmentImage ? (
@@ -646,7 +629,6 @@ function CustomApparelBuilder() {
                       />
                     )}
 
-                    {/* Render all selected placement bounding boxes and images for the current active view */}
                     {presetsInActiveView.map((preset) => {
                       const design = designsByLocation[preset.id]
                       const isTargeted = preset.id === currentActiveTargetId
@@ -692,7 +674,6 @@ function CustomApparelBuilder() {
                   </div>
                 </div>
 
-                {/* Active Target Scale Control */}
                 {currentLocationDesign?.preview && (
                   <div className="mt-4 rounded-xl bg-neutral-50 p-3 border border-neutral-200">
                     <div className="flex justify-between text-xs font-medium text-neutral-600 mb-1.5">
@@ -718,7 +699,6 @@ function CustomApparelBuilder() {
                   </div>
                 )}
 
-                {/* Selected Placements Summary Badge List */}
                 <div className="mt-4">
                   <span className="text-[11px] font-semibold text-neutral-400 uppercase tracking-wider block mb-1.5">
                     Selected Placements &amp; Images ({selectedPlacementIds.length}):
@@ -759,9 +739,7 @@ function CustomApparelBuilder() {
             </div>
           </div>
 
-          {/* Right Column - Options */}
           <div className="lg:col-span-3 space-y-6">
-            {/* Apparel Type */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-4">
                 Apparel Type
@@ -794,7 +772,6 @@ function CustomApparelBuilder() {
               </div>
             </section>
 
-            {/* Size */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-4">
                 Size
@@ -821,7 +798,6 @@ function CustomApparelBuilder() {
               </div>
             </section>
 
-            {/* Color */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-4">
                 Color
@@ -858,7 +834,6 @@ function CustomApparelBuilder() {
               </div>
             </section>
 
-            {/* Print Placements (Front, Back, Sleeves) */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900">
@@ -972,7 +947,6 @@ function CustomApparelBuilder() {
               </div>
             </section>
 
-            {/* Per-Location Multi-Image Upload Manager */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900">
@@ -986,7 +960,6 @@ function CustomApparelBuilder() {
                 Select which location you are uploading a photo for below:
               </p>
 
-              {/* Location Target Selection Tabs */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {selectedPlacementIds.map((id) => {
                   const preset = PLACEMENT_PRESETS.find((p) => p.id === id)
@@ -1018,7 +991,6 @@ function CustomApparelBuilder() {
                 })}
               </div>
 
-              {/* Upload Drop Zone for Active Location Target */}
               {currentLocationDesign?.preview ? (
                 <div className="flex items-center gap-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
                   <img
@@ -1104,7 +1076,6 @@ function CustomApparelBuilder() {
               />
             </section>
 
-            {/* Shipping */}
             <section className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-4">
                 Shipping Option
@@ -1167,7 +1138,6 @@ function CustomApparelBuilder() {
               </div>
             </section>
 
-            {/* Price Breakdown */}
             <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-900 mb-4">
                 Price Breakdown
@@ -1236,7 +1206,6 @@ function CustomApparelBuilder() {
               </div>
             </div>
 
-            {/* Add to Cart */}
             <button
               onClick={handleAddToCart}
               disabled={showSuccess}
@@ -1265,7 +1234,6 @@ function CustomApparelBuilder() {
         </div>
       </div>
 
-      {/* Success Toast */}
       {showSuccess && (
         <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 animate-in fade-in slide-in-from-bottom-4 duration-300">
           <div className="flex items-center gap-3 rounded-xl bg-black px-5 py-3 text-sm font-medium text-white shadow-2xl">

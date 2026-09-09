@@ -118,54 +118,43 @@ const processSteps = [
 export default function Home() {
   return (
     <div className="overflow-hidden">
-      {/* Hero */}
       <section className="relative mx-auto max-w-7xl px-6 pb-24 pt-16 lg:px-8 lg:pt-24">
         <div className="absolute -right-20 top-12 hidden h-52 w-52 rotate-12 rounded-[38%] bg-[#d9f24a] lg:block" />
         <div className="relative grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
-            <div className="mb-8 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-[#2455d6]">
-              <span className="h-2 w-2 rounded-full bg-[#2455d6]" />
-              Toronto / Canada / Est. now
-            </div>
             <h1 className="display-type max-w-4xl text-6xl leading-[0.88] text-[#151515] sm:text-8xl lg:text-[8.5rem]">
-              Wear your
-              <span className="block text-[#2455d6]">weird.</span>
+              Custom Apparel
+              <span className="block text-[#2455d6]">Fast &amp; Affordable</span>
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#6f6b62] sm:text-xl">
-              Custom apparel for the ideas that do not belong in a template.
-              Designed by you, made with care, and shipped across Canada.
+              Designed by YOU! 🫵
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Link
-            href="/shop"
-            className="inline-flex h-14 items-center justify-center border-2 border-[#151515] bg-[#2455d6] px-8 text-sm font-bold text-white shadow-[4px_4px_0_#151515] transition-transform hover:-translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0_#151515]"
+            href="/bulk-orders"
+            className="button-primary h-14"
           >
-            Find your fit <span className="ml-3 text-lg">↗</span>
+            Buying in Bulk? <span className="ml-3 text-lg">↗</span>
           </Link>
           <Link
             href="/custom-apparel"
-            className="inline-flex h-14 items-center justify-center border-2 border-[#151515] bg-[#fffdf8] px-8 text-sm font-bold text-[#151515] transition-colors hover:bg-[#d9f24a]"
+            className="button-secondary h-14"
           >
             Make something yours <span className="ml-3 text-lg">✦</span>
           </Link>
         </div>
           </div>
-          <div className="relative mx-auto w-full max-w-sm rotate-2 border-2 border-[#151515] bg-[#fffdf8] p-4 shadow-[8px_8px_0_#2455d6] lg:mb-2">
+          <div className="relative mx-auto w-full max-w-sm rotate-2 border-2 border-[#151515] bg-white p-4 shadow-[8px_8px_0_#2455d6] lg:mb-2">
             <div className="relative aspect-[4/5] overflow-hidden bg-[#151515]">
               <Image src={photoMiles} alt="George's Attire custom apparel" fill sizes="(max-width: 1024px) 80vw, 30vw" className="object-cover" priority />
-              <div className="absolute inset-x-4 bottom-4 bg-[#d9f24a] px-4 py-3 text-xs font-bold uppercase tracking-[0.16em] text-[#151515]">
-                Made for main characters
-              </div>
             </div>
-            <p className="display-type mt-4 text-2xl">No boring basics.</p>
           </div>
         </div>
         <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-3 border-t-2 border-[#151515] pt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#6f6b62]">
-          <span>Small batch energy</span><span>✦</span><span>Premium blanks</span><span>✦</span><span>Printed in Canada</span>
+          <span>100% cotton</span><span>✦</span><span>Unbeatable prices</span><span>✦</span><span>Printed in Canada</span>
         </div>
       </section>
 
-      {/* Featured Products */}
       <section className="border-t border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -178,7 +167,6 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            {/* T-Shirt */}
             <div className="rounded-2xl border border-neutral-200 bg-white">
               <div className="relative h-64 overflow-hidden rounded-t-2xl bg-white">
                 <Image
@@ -197,14 +185,13 @@ export default function Home() {
                 <p className="mt-1 text-lg font-bold text-black">$10 CAD</p>
                 <Link
                   href="/custom-apparel?product=TSHIRT"
-                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  className="button-primary mt-5 w-full"
                 >
                   Customize
                 </Link>
               </div>
             </div>
 
-            {/* Sweatshirt */}
             <div className="rounded-2xl border border-neutral-200 bg-white">
               <div className="relative h-64 overflow-hidden rounded-t-2xl bg-white">
                 <Image
@@ -223,14 +210,13 @@ export default function Home() {
                 <p className="mt-1 text-lg font-bold text-black">$20 CAD</p>
                 <Link
                   href="/custom-apparel?product=SWEATSHIRT"
-                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  className="button-primary mt-5 w-full"
                 >
                   Customize
                 </Link>
               </div>
             </div>
 
-            {/* Hoodie */}
             <div className="rounded-2xl border border-neutral-200 bg-white">
               <div className="relative h-64 overflow-hidden rounded-t-2xl bg-white">
                 <Image
@@ -249,7 +235,7 @@ export default function Home() {
                 <p className="mt-1 text-lg font-bold text-black">$30 CAD</p>
                 <Link
                   href="/custom-apparel?product=HOODIE"
-                  className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-full bg-accent text-sm font-medium text-white transition-colors hover:bg-neutral-800"
+                  className="button-primary mt-5 w-full"
                 >
                   Customize
                 </Link>
@@ -259,7 +245,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing + Quote Calculator */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -305,7 +290,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
       <section className="border-t border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -360,7 +344,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Production Process */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -398,7 +381,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Organizations Banner */}
       <section className="border-t border-neutral-100 bg-black">
         <div className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
@@ -413,14 +395,13 @@ export default function Home() {
           </p>
           <Link
             href="/organizations"
-            className="mt-8 inline-flex h-12 items-center rounded-full bg-white px-8 text-sm font-medium text-black transition-colors hover:bg-neutral-200"
+            className="button-inverse mt-8"
           >
             Explore Organizations
           </Link>
         </div>
       </section>
 
-      {/* Reviews */}
       <section className="border-t border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-[90rem] px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -435,7 +416,7 @@ export default function Home() {
                 href={REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center rounded-full bg-accent px-7 text-sm font-medium text-white transition-colors hover:bg-accent/90"
+                className="button-primary"
               >
                 Leave a Review
               </a>
@@ -443,7 +424,7 @@ export default function Home() {
                 href={REVIEWS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center rounded-full border border-neutral-200 px-7 text-sm font-medium text-black transition-colors hover:border-accent"
+                className="button-secondary"
               >
                 See Reviews on Google
               </a>
@@ -511,7 +492,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
@@ -523,7 +503,7 @@ export default function Home() {
           </p>
           <Link
             href="/custom-apparel"
-            className="mt-8 inline-flex h-12 items-center rounded-full bg-accent px-8 text-sm font-medium text-white transition-colors hover:bg-accent/90"
+            className="button-primary mt-8"
           >
             Start Designing
           </Link>

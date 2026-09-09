@@ -137,9 +137,7 @@ export default function CheckoutPage() {
         </h1>
 
         <form onSubmit={handleSubmit} className="mt-8 grid gap-8 lg:grid-cols-3">
-          {/* Form */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Customer Info */}
             <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400">
                 Customer Information
@@ -192,7 +190,6 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* Shipping Address */}
             <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400">
                 Shipping Address
@@ -215,7 +212,6 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            {/* Shipping Method */}
             <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400">
                 Shipping Method
@@ -278,7 +274,6 @@ export default function CheckoutPage() {
             )}
           </div>
 
-          {/* Order Summary Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400">

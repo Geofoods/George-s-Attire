@@ -57,7 +57,6 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-16 grid gap-16 lg:grid-cols-5">
-          {/* Form */}
           <div className="lg:col-span-3">
             {status === "success" ? (
               <div className="rounded-2xl border border-neutral-200 p-10 text-center">
@@ -184,7 +183,6 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Contact Info */}
           <div className="lg:col-span-2">
             <div className="space-y-8">
               <div>

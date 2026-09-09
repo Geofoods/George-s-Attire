@@ -85,7 +85,6 @@ const processSteps = [
 export default function HowItWorksPage() {
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section className="mx-auto max-w-7xl px-6 pt-24 pb-16 text-center lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           Simple by Design
@@ -99,7 +98,6 @@ export default function HowItWorksPage() {
         </p>
       </section>
 
-      {/* Steps */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2">
@@ -123,7 +121,6 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* Production Process */}
       <section className="border-t border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -161,7 +158,6 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* Pricing + CTA */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">

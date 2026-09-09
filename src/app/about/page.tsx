@@ -77,7 +77,6 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section className="mx-auto max-w-7xl px-6 pt-24 pb-20 text-center lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           Our Story
@@ -90,7 +89,6 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* Story */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -132,7 +130,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Values */}
       <section className="border-t border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -165,7 +162,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">

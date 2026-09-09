@@ -207,7 +207,6 @@ function OrdersTab() {
       setTotal(data.total || 0);
       setTotalPages(data.totalPages || 1);
     } catch {
-      // ignore
     } finally {
       setLoading(false);
     }
@@ -228,7 +227,6 @@ function OrdersTab() {
         fetchOrders();
       }
     } catch {
-      // ignore
     }
   };
 
@@ -569,7 +567,6 @@ function BulkQuotesTab() {
         );
       }
     } catch {
-      // ignore
     }
   };
 

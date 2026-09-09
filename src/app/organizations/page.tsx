@@ -73,7 +73,6 @@ const bulkInfo = [
 export default function OrganizationsPage() {
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section className="mx-auto max-w-7xl px-6 pt-24 pb-16 text-center lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           For Organizations
@@ -102,7 +101,6 @@ export default function OrganizationsPage() {
         </div>
       </section>
 
-      {/* Audiences */}
       <section className="border-t border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -143,7 +141,6 @@ export default function OrganizationsPage() {
         </div>
       </section>
 
-      {/* Bulk Info */}
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">
@@ -188,7 +185,6 @@ export default function OrganizationsPage() {
         </div>
       </section>
 
-      {/* Transparent pricing */}
       <section className="border-t border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
           <div className="text-center">

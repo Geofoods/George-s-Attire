@@ -24,7 +24,6 @@ export async function GET(request: NextRequest) {
     const page = parseInt(request.nextUrl.searchParams.get("page") || "1", 10);
     const pageSize = 20;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const where: any = {};
 
     if (status && status !== "ALL") {

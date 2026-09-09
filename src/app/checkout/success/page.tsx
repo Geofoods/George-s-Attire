@@ -89,7 +89,6 @@ function CheckoutSuccessContent() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
       <div className="animate-fade-in text-center">
-        {/* Success Icon */}
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-black">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +114,6 @@ function CheckoutSuccessContent() {
           <span className="ml-1 text-xs font-bold text-black">{order.orderNumber}</span>
         </div>
 
-        {/* Order Details */}
         <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 text-left shadow-sm sm:p-8">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400">
             Order Details
@@ -173,7 +171,6 @@ function CheckoutSuccessContent() {
           </div>
         </div>
 
-        {/* Estimated Delivery */}
         <div className="mt-6 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
           <div className="flex items-center justify-center gap-3">
             <svg
@@ -199,7 +196,6 @@ function CheckoutSuccessContent() {
           </div>
         </div>
 
-        {/* Action Links */}
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/"

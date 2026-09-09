@@ -130,7 +130,6 @@ export default function BulkOrdersPage() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section className="mx-auto max-w-7xl px-6 pt-24 pb-12 text-center lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
           Bulk Orders
@@ -144,7 +143,6 @@ export default function BulkOrdersPage() {
         </p>
       </section>
 
-      {/* Process Steps */}
       <section className="border-y border-neutral-100 bg-neutral-50">
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
           <div className="grid gap-6 text-center sm:grid-cols-4">
@@ -170,13 +168,11 @@ export default function BulkOrdersPage() {
         </div>
       </section>
 
-      {/* Form */}
       <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
         <form
           onSubmit={handleSubmit}
           className="mx-auto max-w-3xl space-y-10"
         >
-          {/* Pricing Reference */}
           <div className="grid gap-4 sm:grid-cols-3">
             {[
               { label: "Starting prices", value: "T-Shirts $10 · Sweatshirts $20 · Hoodies $30" },
@@ -207,7 +203,6 @@ export default function BulkOrdersPage() {
           </p>
           <div className="h-px bg-neutral-100" />
 
-          {/* Contact Info */}
           <fieldset>
             <legend className="text-sm font-semibold uppercase tracking-[0.15em] text-black">
               Contact Information
@@ -278,7 +273,6 @@ export default function BulkOrdersPage() {
             </div>
           </fieldset>
 
-          {/* Apparel Details */}
           <fieldset>
             <legend className="text-sm font-semibold uppercase tracking-[0.15em] text-black">
               Apparel Details
@@ -328,7 +322,6 @@ export default function BulkOrdersPage() {
               </div>
             </div>
 
-            {/* Sizes */}
             <div className="mt-6">
               <p className="text-sm font-medium text-black">
                 Sizes & Quantities <span className="text-red-500">*</span>
@@ -355,7 +348,6 @@ export default function BulkOrdersPage() {
               </div>
             </div>
 
-            {/* Colors */}
             <div className="mt-6">
               <p className="text-sm font-medium text-black">
                 Colors <span className="text-red-500">*</span>
@@ -381,7 +373,6 @@ export default function BulkOrdersPage() {
               </div>
             </div>
 
-            {/* Prints */}
             <div className="mt-6">
               <label
                 htmlFor="bo-prints"
@@ -405,7 +396,6 @@ export default function BulkOrdersPage() {
             </div>
           </fieldset>
 
-          {/* Design & Schedule */}
           <fieldset>
             <legend className="text-sm font-semibold uppercase tracking-[0.15em] text-black">
               Design & Schedule
@@ -447,7 +437,6 @@ export default function BulkOrdersPage() {
             </div>
           </fieldset>
 
-          {/* Additional Info */}
           <fieldset>
             <legend className="text-sm font-semibold uppercase tracking-[0.15em] text-black">
               Additional Information

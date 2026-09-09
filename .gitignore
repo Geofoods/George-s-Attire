@@ -50,3 +50,11 @@ public/uploads/*
 
 # generated
 /generated
+
+# local agent instructions and skills
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.claude/
+/.cursor/
+/.devin/

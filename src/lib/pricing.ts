@@ -16,7 +16,6 @@ async function getConfig(key: string): Promise<number> {
     const config = await prisma.pricingConfig.findUnique({ where: { key } })
     if (config) return config.value
   } catch {
-    // fallback to default if DB unavailable
   }
   return DEFAULTS[key] ?? 0
 }

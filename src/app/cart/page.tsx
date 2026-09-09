@@ -76,7 +76,6 @@ export default function CartPage() {
         </p>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-3">
-          {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map((item) => {
               const unitPrice = item.basePrice + item.extraPrintCharge + item.xlSurcharge
@@ -210,7 +209,6 @@ export default function CartPage() {
             })}
           </div>
 
-          {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="sticky top-24 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
               <h2 className="text-sm font-semibold uppercase tracking-wider text-neutral-400">
