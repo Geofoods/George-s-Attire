@@ -1,8 +1,10 @@
 
 # George's Attire
 
-<img width="1912" height="978" alt="Screenshot 2026-08-31 112452" src="https://github.com/user-attachments/assets/8d2aad1b-ba26-4d96-93fe-7e0c3feb0441" />
-<img width="1916" height="829" alt="Screenshot 2026-09-04 220214" src="https://github.com/user-attachments/assets/ee2d71ea-7d7b-4612-9d4f-c9a1d6878b7f" />
+<img width="1840" height="931" alt="Screenshot 2026-09-10 214521" src="https://github.com/user-attachments/assets/123839b6-b2d8-4068-94de-b9e7d1e3a1f8" />
+<img width="1918" height="977" alt="Screenshot 2026-09-10 214514" src="https://github.com/user-attachments/assets/594d75ea-3f2e-4be7-a236-d13acc23aeb8" />
+<img width="1896" height="1035" alt="Screenshot 2026-09-10 214507" src="https://github.com/user-attachments/assets/3b96b7ae-ffcd-49cd-922a-cbdae3616251" />
+
 
 
 George's Attire is my own small business that makes custom apparel for individuals, teams, small businesses, and local organizations near me. You can choose an apparel type, upload artwork, configure print locations, add items to a cart, and pay via Stripe integration. The site also includes an account system and bulk quote requests, using Supabase as the back end.
