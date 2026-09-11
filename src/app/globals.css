@@ -6,8 +6,8 @@
   --color-muted: #6f6b62;
   --color-border: #e5e5e5;
   --color-card: #ffffff;
-  --color-accent: #2455d6;
-  --color-lime: #d9f24a;
+  --color-accent: #151515;
+  --color-lime: #e5e5e5;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -62,12 +62,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b9b2a5;
+  background: #a3a3a3;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8f887b;
+  background: #737373;
 }
 
 .display-type {
@@ -97,7 +97,7 @@ html {
 }
 
 .button-primary {
-  background: #2455d6;
+  background: #151515;
   color: #ffffff;
   box-shadow: 4px 4px 0 #151515;
 }
@@ -113,7 +113,7 @@ html {
 }
 
 .button-secondary:hover {
-  background: #d9f24a;
+  background: #e5e5e5;
 }
 
 .button-inverse {
@@ -122,7 +122,7 @@ html {
 }
 
 .button-inverse:hover {
-  background: #d9f24a;
+  background: #e5e5e5;
 }
 
 a[class*="bg-accent"],
@@ -163,7 +163,7 @@ button[class*="border-neutral-200"] {
 a[class*="border-neutral-200"]:hover,
 button[class*="border-neutral-200"]:hover {
   transform: translate(1px, -1px);
-  background: var(--color-lime);
+  background: #e5e5e5;
   border-color: #151515;
   color: #151515;
 }

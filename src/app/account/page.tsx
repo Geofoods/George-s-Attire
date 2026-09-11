@@ -37,13 +37,13 @@ const STATUS_LABELS: Record<string, string> = {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  PENDING_PAYMENT: "bg-yellow-50 text-yellow-700 border-yellow-200",
-  PAID: "bg-blue-50 text-blue-700 border-blue-200",
-  IN_PRODUCTION: "bg-purple-50 text-purple-700 border-purple-200",
-  READY: "bg-indigo-50 text-indigo-700 border-indigo-200",
-  SHIPPED: "bg-cyan-50 text-cyan-700 border-cyan-200",
-  COMPLETED: "bg-green-50 text-green-700 border-green-200",
-  CANCELLED: "bg-red-50 text-red-700 border-red-200",
+  PENDING_PAYMENT: "bg-neutral-100 text-neutral-700 border-neutral-300",
+  PAID: "bg-neutral-100 text-neutral-700 border-neutral-300",
+  IN_PRODUCTION: "bg-neutral-200 text-neutral-800 border-neutral-400",
+  READY: "bg-neutral-200 text-neutral-800 border-neutral-400",
+  SHIPPED: "bg-neutral-200 text-neutral-800 border-neutral-400",
+  COMPLETED: "bg-black text-white border-black",
+  CANCELLED: "bg-neutral-100 text-neutral-500 border-neutral-300",
 }
 
 function formatPrice(cents: number): string {

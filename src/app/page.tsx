@@ -119,12 +119,12 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <section className="relative mx-auto max-w-7xl px-6 pb-24 pt-16 lg:px-8 lg:pt-24">
-        <div className="absolute -right-20 top-12 hidden h-52 w-52 rotate-12 rounded-[38%] bg-[#d9f24a] lg:block" />
+        <div className="absolute -right-20 top-12 hidden h-52 w-52 rotate-12 rounded-[38%] bg-neutral-200 lg:block" />
         <div className="relative grid items-end gap-12 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
             <h1 className="display-type max-w-4xl text-6xl leading-[0.88] text-[#151515] sm:text-8xl lg:text-[8.5rem]">
               Custom Apparel
-              <span className="block text-[#2455d6]">Fast &amp; Affordable</span>
+              <span className="block text-black">Fast &amp; Affordable</span>
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#6f6b62] sm:text-xl">
               Designed by YOU! 🫵
@@ -144,7 +144,7 @@ export default function Home() {
           </Link>
         </div>
           </div>
-          <div className="relative mx-auto w-full max-w-sm rotate-2 border-2 border-[#151515] bg-white p-4 shadow-[8px_8px_0_#2455d6] lg:mb-2">
+          <div className="relative mx-auto w-full max-w-sm rotate-2 border-2 border-[#151515] bg-white p-4 shadow-[8px_8px_0_#151515] lg:mb-2">
             <div className="relative aspect-[4/5] overflow-hidden bg-[#151515]">
               <Image src={photoMiles} alt="George's Attire custom apparel" fill sizes="(max-width: 1024px) 80vw, 30vw" className="object-cover" priority />
             </div>

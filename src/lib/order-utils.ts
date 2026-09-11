@@ -22,17 +22,17 @@ export function formatDate(date: Date): string {
 
 export function getStatusColor(status: string): string {
   const colors: Record<string, string> = {
-    PENDING_PAYMENT: 'text-yellow-600 bg-yellow-50',
-    PAID: 'text-blue-600 bg-blue-50',
-    IN_PRODUCTION: 'text-purple-600 bg-purple-50',
-    READY: 'text-indigo-600 bg-indigo-50',
-    SHIPPED: 'text-cyan-600 bg-cyan-50',
-    COMPLETED: 'text-green-600 bg-green-50',
-    CANCELLED: 'text-red-600 bg-red-50',
-    PENDING: 'text-yellow-600 bg-yellow-50',
-    QUOTED: 'text-blue-600 bg-blue-50',
-    ACCEPTED: 'text-green-600 bg-green-50',
-    REJECTED: 'text-red-600 bg-red-50',
+    PENDING_PAYMENT: 'text-neutral-700 bg-neutral-100',
+    PAID: 'text-neutral-700 bg-neutral-100',
+    IN_PRODUCTION: 'text-neutral-800 bg-neutral-200',
+    READY: 'text-neutral-800 bg-neutral-200',
+    SHIPPED: 'text-neutral-800 bg-neutral-200',
+    COMPLETED: 'text-white bg-black',
+    CANCELLED: 'text-neutral-500 bg-neutral-100',
+    PENDING: 'text-neutral-700 bg-neutral-100',
+    QUOTED: 'text-neutral-700 bg-neutral-100',
+    ACCEPTED: 'text-white bg-black',
+    REJECTED: 'text-neutral-800 bg-neutral-200',
   }
   return colors[status] || 'text-gray-600 bg-gray-50'
 }
