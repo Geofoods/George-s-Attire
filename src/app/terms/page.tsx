@@ -30,15 +30,15 @@ const sections = [
   },
   {
     title: "6. Shipping & Delivery",
-    body: "Production and shipping times are estimates and not guaranteed. We are not responsible for delays caused by carriers, customs, or events outside our control. Risk of loss passes to you upon delivery to the carrier. Please review our Shipping & Returns policy for full details on delivery times and lost packages.",
+    body: "Production and shipping times are estimates and may change. We are not responsible for delays caused by carriers, customs, or events outside our control. Please contact us promptly about delivery problems so we can investigate with the carrier.",
   },
   {
     title: "7. No Returns or Refunds",
-    body: "All sales are final. We do not offer returns, exchanges, or refunds for any reason, including a change of mind, wrong size selected, or incorrect personalization. Because every garment is custom-made specifically for your order, it cannot be resold or reused. The only exception is an item that arrives defective or damaged in that case we will replace it at no cost, but we will not issue a refund.",
+    body: "Custom items may not be eligible for return because they are made to your specifications. Nothing in this section limits any mandatory consumer rights or remedies that apply under the law. If an item arrives defective, damaged, or materially different from the order, contact us promptly so we can review the issue and provide any remedy required by law.",
   },
   {
     title: "8. Intellectual Property",
-    body: "All content on this website, including text, graphics, logos, and software, is the property of George's Attire and is protected by applicable copyright and trademark laws. You may not reproduce, distribute, or use any content without our written permission.",
+    body: "Content on this website, including text, graphics, logos, photographs, and software, is owned by George's Attire or used with permission and may be protected by copyright and trademark laws. You may not reproduce, distribute, or use it without permission from the applicable rights holder.",
   },
   {
     title: "9. Limitation of Liability",
@@ -69,20 +69,33 @@ export default function TermsPage() {
           what to expect when ordering with us.
         </p>
         <p className="mt-3 text-sm text-neutral-400">
-          Effective date: January 1, 2026
+          Effective date: September 11, 2026
         </p>
       </section>
 
       <section className="mx-auto max-w-3xl px-6 lg:px-8">
-        <div className="rounded-2xl border-2 border-red-200 bg-red-50 px-6 py-5 text-center sm:px-8">
-          <h2 className="text-base font-bold text-red-800">
-            No Returns or Exchanges
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-50 px-6 py-5 text-center sm:px-8">
+          <h2 className="text-base font-bold text-black">
+            Custom order policy
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-red-700">
-            All sales are final. Because every item is custom-made to your
-            order, we do not accept returns, exchanges, or refunds for any
-            reason including a simple change of mind. The only exception is
-            a defective or damaged item, which we will replace, never refund.
+          <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+            Custom items may not be eligible for return because they are made
+            to your specifications. Any mandatory consumer rights still apply.
+            Contact us promptly if an item is defective, damaged, or materially
+            different from your order.
+          </p>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-6 pt-10 lg:px-8">
+        <div className="rounded-2xl border border-neutral-200 bg-neutral-50 px-6 py-5 text-sm leading-relaxed text-neutral-600 sm:px-8">
+          <p className="font-semibold text-black">Business contact</p>
+          <p className="mt-2">George&apos;s Attire, Canada</p>
+          <p>georgesunreal@gmail.com | 613 619 5185</p>
+          <p className="mt-3 text-xs text-neutral-500">
+            These terms are general information and are not legal advice. Have
+            them reviewed for your business, location, products, and consumer
+            obligations before relying on them.
           </p>
         </div>
       </section>

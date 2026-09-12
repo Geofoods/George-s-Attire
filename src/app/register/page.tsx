@@ -10,6 +10,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
+  const [consent, setConsent] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [serverError, setServerError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -29,6 +30,9 @@ export default function RegisterPage() {
     if (password !== confirmPassword) {
       errs.confirmPassword = "Passwords do not match"
     }
+    if (!consent) {
+      errs.consent = "Please acknowledge the Privacy Policy"
+    }
 
     setErrors(errs)
     return Object.keys(errs).length === 0
@@ -45,7 +49,7 @@ export default function RegisterPage() {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim().toLowerCase(), password }),
+        body: JSON.stringify({ name: name.trim(), email: email.trim().toLowerCase(), password, consent }),
       })
 
       const data = await res.json()
@@ -149,6 +153,29 @@ export default function RegisterPage() {
                 placeholder="Re-enter your password"
               />
               {errors.confirmPassword && <p className="mt-1 text-xs text-red-600">{errors.confirmPassword}</p>}
+            </div>
+
+            <div>
+              <label className="flex items-start gap-3 text-sm text-neutral-600">
+                <input
+                  type="checkbox"
+                  required
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 accent-black"
+                />
+                <span>
+                  I agree to the{" "}
+                  <Link className="font-medium text-black underline underline-offset-2" href="/terms">
+                    Terms of Service
+                  </Link>{" "}
+                  and acknowledge the{" "}
+                  <Link className="font-medium text-black underline underline-offset-2" href="/privacy">
+                    Privacy Policy
+                  </Link>.
+                </span>
+              </label>
+              {errors.consent && <p className="mt-1 text-xs text-red-600">{errors.consent}</p>}
             </div>
 
             <button

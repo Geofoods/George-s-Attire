@@ -9,6 +9,7 @@ export default function ContactPage() {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -17,11 +18,17 @@ export default function ContactPage() {
     setStatus("submitting");
     setErrorMsg("");
 
+    if (!consent) {
+      setStatus("error");
+      setErrorMsg("Please acknowledge the Privacy Policy before sending your message.");
+      return;
+    }
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, subject, message }),
+        body: JSON.stringify({ name, email, subject, message, consent }),
       });
 
       if (!res.ok) {
@@ -34,6 +41,7 @@ export default function ContactPage() {
       setEmail("");
       setSubject("");
       setMessage("");
+      setConsent(false);
     } catch (err) {
       setStatus("error");
       setErrorMsg(err instanceof Error ? err.message : "Something went wrong.");
@@ -171,6 +179,23 @@ export default function ContactPage() {
                 {status === "error" && (
                   <p className="mt-4 text-sm text-red-600">{errorMsg}</p>
                 )}
+
+                <label className="mt-6 flex items-start gap-3 text-sm text-neutral-600">
+                  <input
+                    type="checkbox"
+                    required
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 accent-black"
+                  />
+                  <span>
+                    I agree that George&apos;s Attire may use the information in
+                    this form to respond to my message, as described in the{" "}
+                    <a className="font-medium text-black underline underline-offset-2" href="/privacy">
+                      Privacy Policy
+                    </a>.
+                  </span>
+                </label>
 
                 <button
                   type="submit"

@@ -6,7 +6,11 @@ import { validateEmail, sanitizeString } from "@/lib/validations"
 export async function POST(req: Request) {
   try {
     const body = await req.json()
-    const { name, email, password } = body
+    const { name, email, password, consent } = body
+
+    if (consent !== true) {
+      return NextResponse.json({ error: "Terms and privacy acknowledgment is required" }, { status: 400 })
+    }
 
     if (!name || sanitizeString(name).length < 2) {
       return NextResponse.json({ error: "Name must be at least 2 characters" }, { status: 400 })

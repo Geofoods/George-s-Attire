@@ -1032,6 +1032,9 @@ function CustomApparelBuilder() {
                 </div>
               ) : (
                 <div
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Upload photo for ${activeTargetPreset?.category} (${activeTargetPreset?.label})`}
                   onDragOver={(e) => {
                     e.preventDefault()
                     setIsDragging(true)
@@ -1039,6 +1042,12 @@ function CustomApparelBuilder() {
                   onDragLeave={() => setIsDragging(false)}
                   onDrop={handleFileDrop}
                   onClick={() => fileInputRef.current?.click()}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault()
+                      fileInputRef.current?.click()
+                    }
+                  }}
                   className={`flex flex-col items-center justify-center rounded-xl border-2 border-dashed p-8 cursor-pointer transition-all duration-150 ${
                     isDragging
                       ? "border-black bg-neutral-100"

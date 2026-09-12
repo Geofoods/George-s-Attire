@@ -12,7 +12,7 @@ const values = [
   {
     title: "Quality",
     description:
-      "Every garment is crafted with premium materials and meticulous attention to detail. We never cut corners because your brand deserves the best.",
+      "We select garments and prepare each order with care and attention to detail.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -110,8 +110,8 @@ export default function AboutPage() {
                   bring the vision, we handle the rest.
                 </p>
                 <p>
-                  We believe custom apparel should feel premium, look sharp, and
-                  be accessible. That&apos;s what we deliver.
+                  We believe custom apparel should be clear, personal, and
+                  accessible.
                 </p>
               </div>
             </div>

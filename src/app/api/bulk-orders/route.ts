@@ -8,6 +8,13 @@ export async function POST(request: Request) {
 
     const validation = validateBulkQuoteInput(body);
 
+    if (body.consent !== true) {
+      return NextResponse.json(
+        { error: "Privacy acknowledgment is required" },
+        { status: 400 }
+      );
+    }
+
     if (!validation.valid) {
       return NextResponse.json(
         { error: validation.errors[0] },

@@ -17,7 +17,14 @@ const transporter = nodemailer.createTransport({
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, subject, message } = body;
+    const { name, email, subject, message, consent } = body;
+
+    if (consent !== true) {
+      return NextResponse.json(
+        { error: "Privacy acknowledgment is required" },
+        { status: 400 }
+      );
+    }
 
     const errors: string[] = [];
 

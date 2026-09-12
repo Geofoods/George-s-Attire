@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "George's Attire - Custom Apparel Made Your Way",
-  description: "Premium custom apparel designed and crafted to your exact specifications. George's Attire brings your vision to life.",
+  description: "Custom apparel designed to your specifications. George's Attire helps bring your vision to life.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -30,7 +30,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <Providers>
           <Navigation />
-          <main className="flex-1">
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-black focus:shadow-lg"
+          >
+            Skip to main content
+          </a>
+          <main id="main-content" className="flex-1">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />

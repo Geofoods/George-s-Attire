@@ -4,7 +4,7 @@ import { ProductType } from "@prisma/client";
 export const metadata = {
   title: "Hoodies | George's Attire",
   description:
-    "Shop premium custom hoodies, designed and created just for you.",
+    "Shop custom hoodies, designed and created just for you.",
 };
 
 export const dynamic = "force-dynamic";
@@ -14,7 +14,7 @@ export default function HoodiesPage() {
     <ShopCategoryPage
       eyebrow="Hoodies"
       title="Hoodies"
-      description="Premium custom hoodies, made your way."
+      description="Custom hoodies, made your way."
       type={ProductType.HOODIE}
     />
   );

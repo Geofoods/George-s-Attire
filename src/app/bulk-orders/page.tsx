@@ -22,9 +22,9 @@ export default function BulkOrdersPage() {
   const [sizes, setSizes] = useState<SizeQty>({ S: 0, M: 0, L: 0, XL: 0 });
   const [colors, setColors] = useState<string[]>([]);
   const [numberOfPrints, setNumberOfPrints] = useState(1);
-  const [designFile, setDesignFile] = useState<File | null>(null);
   const [desiredDate, setDesiredDate] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -49,6 +49,12 @@ export default function BulkOrdersPage() {
     setStatus("submitting");
     setErrorMsg("");
 
+    if (!consent) {
+      setStatus("error");
+      setErrorMsg("Please acknowledge the Privacy Policy before requesting a quote.");
+      return;
+    }
+
     const payload = {
       name,
       email,
@@ -64,6 +70,7 @@ export default function BulkOrdersPage() {
       numberOfPrints,
       desiredDate: desiredDate || undefined,
       additionalInfo,
+      consent,
     };
 
     try {
@@ -403,24 +410,6 @@ export default function BulkOrdersPage() {
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
               <div>
                 <label
-                  htmlFor="bo-design"
-                  className="block text-sm font-medium text-black"
-                >
-                  Upload Design
-                </label>
-                <input
-                  id="bo-design"
-                  type="file"
-                  accept=".png,.jpg,.jpeg,.svg,.pdf,.ai,.eps"
-                  onChange={(e) => setDesignFile(e.target.files?.[0] ?? null)}
-                  className="mt-2 block w-full text-sm text-neutral-500 file:mr-4 file:rounded-lg file:border file:border-neutral-200 file:bg-white file:px-4 file:py-2 file:text-sm file:font-medium file:text-black file:transition-colors hover:file:border-black"
-                />
-                <p className="mt-1 text-xs text-neutral-400">
-                  PNG, JPG, SVG, PDF, AI, or EPS
-                </p>
-              </div>
-              <div>
-                <label
                   htmlFor="bo-date"
                   className="block text-sm font-medium text-black"
                 >
@@ -453,6 +442,23 @@ export default function BulkOrdersPage() {
           {status === "error" && (
             <p className="text-sm text-red-600">{errorMsg}</p>
           )}
+
+          <label className="flex items-start gap-3 text-sm text-neutral-600">
+            <input
+              type="checkbox"
+              required
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              className="mt-0.5 h-4 w-4 accent-black"
+            />
+            <span>
+              I agree that George&apos;s Attire may use the information in this
+              request to prepare and respond to my quote, as described in the{" "}
+              <a className="font-medium text-black underline underline-offset-2" href="/privacy">
+                Privacy Policy
+              </a>.
+            </span>
+          </label>
 
           <div>
             <button

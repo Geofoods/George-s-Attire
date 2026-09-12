@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Custom Apparel for Teams & Organizations | George's Attire",
   description:
-    "Outfit your club, team, business, or event with custom apparel. Transparent bulk pricing, fast turnaround, and a dedicated quote process.",
+    "Outfit your club, team, business, or event with custom apparel. Transparent bulk pricing and a dedicated quote process.",
 };
 
 const audiences = [

@@ -18,13 +18,13 @@ const TYPE_LABELS: Record<string, string> = {
 export default function CheckoutPage() {
   const router = useRouter()
   const items = useCartStore((s) => s.items)
-  const clearCart = useCartStore((s) => s.clearCart)
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [address, setAddress] = useState("")
   const [shippingMethod, setShippingMethod] = useState<"STANDARD" | "RUSH">("STANDARD")
+  const [consent, setConsent] = useState(false)
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -57,6 +57,12 @@ export default function CheckoutPage() {
     e.preventDefault()
     setError("")
     setLoading(true)
+
+    if (!consent) {
+      setError("Please acknowledge the Terms of Service and Privacy Policy before paying.")
+      setLoading(false)
+      return
+    }
 
     const orderItems = items.map((item) => ({
       productId: item.productId,
@@ -92,6 +98,7 @@ export default function CheckoutPage() {
           rushSurcharge,
           tax,
           total,
+          consent,
         }),
       })
 
@@ -102,7 +109,7 @@ export default function CheckoutPage() {
       }
 
       if (data.url) {
-        window.location.href = data.url
+        window.location.assign(data.url)
       } else {
         throw new Error("No checkout URL returned")
       }
@@ -338,6 +345,26 @@ export default function CheckoutPage() {
                   `Pay ${formatPrice(total)}`
                 )}
               </button>
+
+              <label className="mt-4 flex items-start gap-3 text-xs leading-relaxed text-neutral-600">
+                <input
+                  type="checkbox"
+                  required
+                  checked={consent}
+                  onChange={(e) => setConsent(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-black"
+                />
+                <span>
+                  I agree to the{" "}
+                  <Link className="font-medium text-black underline underline-offset-2" href="/terms">
+                    Terms of Service
+                  </Link>{" "}
+                  and acknowledge the{" "}
+                  <Link className="font-medium text-black underline underline-offset-2" href="/privacy">
+                    Privacy Policy
+                  </Link>.
+                </span>
+              </label>
 
               <p className="mt-3 text-center text-[11px] text-neutral-400">
                 Secure checkout powered by Stripe

@@ -4,59 +4,7 @@ import Image from "next/image";
 import blackShirt from "../../shirts/black.webp";
 import blackSweatshirt from "../../sweatshirts/black.webp";
 import blackHoodie from "../../hoddies/black.jpg";
-import photo1908 from "../../photos/IMG_1908 (1).webp";
 import photoMiles from "../../photos/meandmileseom.webp";
-import photoUnnamed3 from "../../photos/unnamed (3).webp";
-import photoRemoveBg from "../../photos/unnamed__1_-removebg-preview (1) (1).webp";
-import photoTransformed from "../../photos/unnamed_(2)-aRGsShNkV-transformed.png";
-import photo2427 from "../../photos/IMG_2427.jpg";
-
-const REVIEWS_URL = "https://g.page/r/CXtdMKndtrHkEAE/review";
-
-const reviews = [
-  {
-    quote:
-      "Incredible experience from start to finish I'd recommend George's Attire without hesitation.",
-    author: "Theodore Short",
-    image: photo1908,
-    imageAlt: "Custom printed t-shirt from George's Attire",
-  },
-  {
-    quote:
-      "Excellent customer service, and my shirt came out looking great.",
-    author: "Miles Wang",
-    image: photoMiles,
-    imageAlt: "Printed shirt from George's Attire",
-  },
-  {
-    quote:
-      "My hoodie was warm, looked great, and the quality was excellent.",
-    author: "Amir Ishkaev",
-    image: photoUnnamed3,
-    imageAlt: "Custom printed shirt from George's Attire",
-  },
-  {
-    quote:
-      "Great quality that was absolutely worth the wait I'd order again in a heartbeat.",
-    author: "Alvin Tan",
-    image: photoRemoveBg,
-    imageAlt: "Printed apparel from George's Attire",
-  },
-  {
-    quote:
-      "Very good and friendly customer service, from the first message to delivery.",
-    author: "Avik Joshi",
-    image: photoTransformed,
-    imageAlt: "Custom printed shirt from George's Attire",
-  },
-  {
-    quote:
-      "The best clothes ever quality you can feel the moment you put them on.",
-    author: "Arush Shrivastava",
-    image: photo2427,
-    imageAlt: "Custom printed shirt from George's Attire",
-  },
-];
 
 const pricingRows = [
   { item: "T-Shirt", price: "$10" },
@@ -88,7 +36,7 @@ const processSteps = [
   },
   {
     title: "Print",
-    description: "Your design is printed with premium quality.",
+    description: "Your design is prepared and printed for your order.",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-7 w-7">
         <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
@@ -151,7 +99,7 @@ export default function Home() {
           </div>
         </div>
         <div className="mt-20 flex flex-wrap items-center gap-x-8 gap-y-3 border-t-2 border-[#151515] pt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#6f6b62]">
-          <span>100% cotton</span><span>✦</span><span>Unbeatable prices</span><span>✦</span><span>Printed in Canada</span>
+          <span>Clear pricing</span><span>✦</span><span>Custom designs</span><span>✦</span><span>Canada-based service</span>
         </div>
       </section>
 
@@ -310,7 +258,7 @@ export default function Home() {
                 Choose Your Apparel
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-neutral-500">
-                Select from our range of premium t-shirts, sweatshirts, and
+                Select from our range of t-shirts, sweatshirts, and
                 hoodies. Pick your size, color, and style.
               </p>
             </div>
@@ -337,7 +285,7 @@ export default function Home() {
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-neutral-500">
                 We craft your custom apparel with care and ship it directly to
-                your door. Premium quality, every time.
+                your door when your order is ready.
               </p>
             </div>
           </div>
@@ -390,7 +338,7 @@ export default function Home() {
             Ordering for a group?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-neutral-400">
-            Get bulk pricing, dedicated quotes, and on-time delivery for your
+            Get bulk pricing, dedicated quotes, and delivery planning for your
             school, team, business, or event.
           </p>
           <Link
@@ -402,103 +350,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-[90rem] px-6 py-16 lg:px-8">
-          <div className="text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-neutral-400">
-              Testimonials
-            </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-black sm:text-3xl">
-              What customers are saying
-            </h2>
-            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <a
-                href={REVIEWS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-primary"
-              >
-                Leave a Review
-              </a>
-              <a
-                href={REVIEWS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-secondary"
-              >
-                See Reviews on Google
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-14 grid gap-8 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-            {reviews.map((review) => (
-              <figure
-                key={review.author}
-                className="flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white"
-              >
-                {review.image && (
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-100">
-                    <Image
-                      src={review.image}
-                      alt={review.imageAlt}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                <div className="flex flex-1 flex-col p-8">
-                  <div className="flex items-center gap-1 text-amber-400">
-                    {[0, 1, 2, 3, 4].map((i) => (
-                      <svg
-                        key={i}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        className="h-4 w-4"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ))}
-                  </div>
-                  <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-neutral-600">
-                    &ldquo;{review.quote}&rdquo;
-                  </blockquote>
-                  <figcaption className="mt-5 text-xs font-medium uppercase tracking-wide text-neutral-400">
-                    {review.author} · Verified Google review
-                  </figcaption>
-                </div>
-              </figure>
-            ))}
-          </div>
-
-          <p className="mt-10 text-center text-sm text-neutral-500">
-            Just got your order?{" "}
-            <a
-              href={REVIEWS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-accent underline underline-offset-2 hover:text-neutral-700"
-            >
-              Share your review on Google
-            </a>{" "}
-            and you could be featured here.
-          </p>
-        </div>
-      </section>
-
       <section className="border-t border-neutral-100">
         <div className="mx-auto max-w-7xl px-6 py-16 text-center lg:px-8">
           <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
             Ready to create something?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-neutral-500">
-            Bring your vision to life with premium custom apparel, designed and
+            Bring your vision to life with custom apparel, designed and
             crafted just for you.
           </p>
           <Link

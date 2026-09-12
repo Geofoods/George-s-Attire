@@ -8,8 +8,6 @@ import {
   calculateBasePrice,
   calculateExtraPrintCost,
   calculateXlSurcharge,
-  calculateShippingCost,
-  calculateRushSurcharge,
 } from "@/lib/pricing";
 import { validateOrderInput, sanitizeString } from "@/lib/validations";
 import { generateOrderNumber } from "@/lib/order-utils";
@@ -35,12 +33,21 @@ export async function POST(request: NextRequest) {
       customerInfo,
       shippingAddress,
       shippingMethod,
+      consent,
     } = body as {
       items: CartItemPayload[];
       customerInfo: { name: string; email: string; phone?: string };
       shippingAddress: string;
       shippingMethod: "STANDARD" | "RUSH";
+      consent: boolean;
     };
+
+    if (consent !== true) {
+      return NextResponse.json(
+        { error: "Terms and privacy acknowledgment is required" },
+        { status: 400 }
+      );
+    }
 
     const validation = validateOrderInput({
       customerName: customerInfo?.name,
